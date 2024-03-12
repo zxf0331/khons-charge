@@ -1,0 +1,1 @@
+<view class=""><user-info bindsetClick="{{a}}" bindwalletItemClick="{{b}}" u-i="6bdafe1a-0" bind:__l="__l"></user-info><menu-card u-i="6bdafe1a-1" bind:__l="__l"></menu-card><cc-my-tabbar wx:if="{{c}}" u-i="6bdafe1a-2" bind:__l="__l" u-p="{{c}}"></cc-my-tabbar></view>

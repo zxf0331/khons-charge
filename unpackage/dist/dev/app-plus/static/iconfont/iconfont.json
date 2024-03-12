@@ -1,0 +1,23 @@
+{
+  "id": "4462692",
+  "name": "uni-app",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4437608",
+      "name": "right-arrow",
+      "font_class": "right-arrow",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "4942659",
+      "name": "icon-set",
+      "font_class": "set",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}

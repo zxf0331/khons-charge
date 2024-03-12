@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar"
+  }
+}

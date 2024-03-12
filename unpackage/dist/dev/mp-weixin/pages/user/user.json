@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "个人中心",
+  "enablePullDownRefresh": false,
+  "backgroundColorTop": "#254818",
+  "usingComponents": {
+    "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar",
+    "user-info": "./cpns/UserInfo",
+    "menu-card": "./cpns/MenuCard"
+  }
+}

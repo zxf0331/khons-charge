@@ -1,0 +1,1 @@
+<view class=""><view>首页</view><cc-my-tabbar wx:if="{{a}}" u-i="62bf4a9a-0" bind:__l="__l" u-p="{{a}}"></cc-my-tabbar></view>

@@ -1,0 +1,150 @@
+/* 水平间距 */
+/* 水平间距 */
+/* 主要颜色 */
+.page-total[data-v-61f40987] {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.tab-list[data-v-61f40987] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 3.75rem;
+  padding-bottom: 10px;
+  background-color: #FFFFFF;
+}
+.tab-list .list[data-v-61f40987] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 5.625rem;
+}
+.tab-list .list uni-image[data-v-61f40987] {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+.tab-list .list uni-text[data-v-61f40987] {
+  color: #333333;
+  font-size: 0.75rem;
+  margin-top: 0.3125rem;
+}
+.tab-list .list .action[data-v-61f40987] {
+  color: #20398a;
+}
+/* 水平间距 */
+/* 水平间距 */
+@font-face {
+  font-family: "iconfont"; /* Project id 4462692 */
+  src: url('../../static/iconfont/iconfont.woff2?t=1710227481634') format('woff2'),
+       url('../../static/iconfont/iconfont.woff?t=1710227481634') format('woff'),
+       url('../../static/iconfont/iconfont.ttf?t=1710227481634') format('truetype');
+}
+.iconfont[data-v-23f92721] {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-right-arrow[data-v-23f92721]:before {
+  content: "\e617";
+}
+.icon-set[data-v-23f92721]:before {
+  content: "\e61c";
+}
+.userinfo[data-v-23f92721] {
+  background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
+}
+.userinfo .info-top[data-v-23f92721] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.625rem;
+}
+.userinfo .info-top .info[data-v-23f92721] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.userinfo .info-top .info .avatar[data-v-23f92721] {
+  width: 3.75rem;
+  height: 3.75rem;
+  border-radius: 50%;
+  margin-right: 0.625rem;
+}
+.userinfo .info-top .info .userdetail[data-v-23f92721] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.userinfo .info-top .info .userdetail uni-text[data-v-23f92721] {
+  margin: 0.125rem 0;
+}
+.userinfo .info-top .info .userdetail .username[data-v-23f92721] {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.userinfo .info-top .set[data-v-23f92721] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  right: 0.625rem;
+  top: 0.625rem;
+}
+.userinfo .info-bottom[data-v-23f92721] {
+  margin-top: 0.5rem;
+  padding-bottom: 0.9375rem;
+}
+.userinfo .info-bottom .wallet[data-v-23f92721] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.userinfo .info-bottom .wallet .wallet-item .item-num[data-v-23f92721] {
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.userinfo .info-bottom .wallet .wallet-item .item-name[data-v-23f92721] {
+  margin-top: 0.125rem;
+  font-size: 0.875rem;
+  color: #666666;
+}
+.userinfo .info-bottom .wallet .wallet-item .item-name .icon-right-arrow[data-v-23f92721] {
+  display: inline;
+  font-size: 0.875rem;
+}
+/* 水平间距 */
+/* 水平间距 */
+.menu-card[data-v-ecdae198] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0.625rem;
+  border-radius: 0.8125rem;
+  border: 1px solid #DCDCDC;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+  padding: 0.625rem 0;
+}
+.menu-card .menu-item[data-v-ecdae198] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu-card .menu-item .image[data-v-ecdae198] {
+  width: 2.1875rem;
+  height: 2.1875rem;
+}
+.menu-card .menu-item .title[data-v-ecdae198] {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #666666;
+}
