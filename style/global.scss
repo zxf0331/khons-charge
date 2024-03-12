@@ -20,3 +20,7 @@ $gFontColor: #666666;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+::v-deep .uni-card__header-content-title span {
+	font-weight: 600;
+}

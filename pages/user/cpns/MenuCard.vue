@@ -1,7 +1,7 @@
 <template>
 	<view class="menu-card">
 		<template v-for="(item, index) in menu" :key="item">
-			<view class="menu-item" @click="">
+			<view class="menu-item" @click="menuItemClick(index)">
 				<image class="image" :src="item.img" mode="widthFix"></image>
 				<text class="title">{{ item.title }}</text>
 			</view>
@@ -10,6 +10,14 @@
 </template>
 
 <script setup>
+	import { defineEmits } from 'vue'
+	
+	const emits = defineEmits(['menuItemClick'])
+	
+	function menuItemClick(index) {
+		emits('menuItemClick', index)
+	}
+	
 	// 模拟数据
 	const menu = [
 		{
@@ -34,7 +42,7 @@
 <style lang="scss">
 	.menu-card {
 		@include normalFlex($justify: space-around);
-		margin: 20rpx;
+		margin: 30rpx;
 		border-radius: 26rpx;
 		border:  1px solid #DCDCDC;
 		box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
