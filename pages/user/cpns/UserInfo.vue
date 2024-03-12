@@ -30,14 +30,7 @@
 
 
 <script setup>
-	import { onMounted, defineEmits } from 'vue'
-
-	onMounted(() => {
-		uni.setNavigationBarColor({
-			frontColor: '#000000',
-			backgroundColor: '#e0ecfc'
-		})
-	})
+	import { defineEmits } from 'vue'
 	
 	// 模拟数据
 	const wallet = [

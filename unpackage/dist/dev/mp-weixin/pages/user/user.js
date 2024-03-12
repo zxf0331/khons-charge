@@ -18,6 +18,12 @@ const __default__ = {
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
   __name: "user",
   setup(__props) {
+    common_vendor.onMounted(() => {
+      common_vendor.index.setNavigationBarColor({
+        frontColor: "#000000",
+        backgroundColor: "#e0ecfc"
+      });
+    });
     function handleSetClick() {
       console.log("设置按钮被点击了");
     }

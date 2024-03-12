@@ -15,8 +15,16 @@
 </script>
 
 <script setup>
+	import { onMounted } from 'vue'
 	import UserInfo from './cpns/UserInfo.vue'
 	import MenuCard from './cpns/MenuCard.vue'
+	
+	onMounted(() => {
+		uni.setNavigationBarColor({
+			frontColor: '#000000',
+			backgroundColor: '#e0ecfc'
+		})
+	})
 	
 	// 点击设置按钮
 	function handleSetClick() {

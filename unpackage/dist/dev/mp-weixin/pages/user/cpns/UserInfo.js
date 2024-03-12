@@ -5,12 +5,6 @@ const _sfc_main = {
   __name: "UserInfo",
   emits: ["setClick", "walletItemClick"],
   setup(__props, { emit: emits }) {
-    common_vendor.onMounted(() => {
-      common_vendor.index.setNavigationBarColor({
-        frontColor: "#000000",
-        backgroundColor: "#e0ecfc"
-      });
-    });
     const wallet = [
       {
         itemName: "余额(元)",

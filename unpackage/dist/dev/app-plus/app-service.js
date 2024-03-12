@@ -202,12 +202,6 @@ if (uni.restoreGlobal) {
     __name: "UserInfo",
     emits: ["setClick", "walletItemClick"],
     setup(__props, { emit: emits }) {
-      vue.onMounted(() => {
-        uni.setNavigationBarColor({
-          frontColor: "#000000",
-          backgroundColor: "#e0ecfc"
-        });
-      });
       const wallet = [
         {
           itemName: "余额(元)",
@@ -353,11 +347,17 @@ if (uni.restoreGlobal) {
   const _sfc_main$2 = /* @__PURE__ */ Object.assign(__default__, {
     __name: "user",
     setup(__props) {
+      vue.onMounted(() => {
+        uni.setNavigationBarColor({
+          frontColor: "#000000",
+          backgroundColor: "#e0ecfc"
+        });
+      });
       function handleSetClick() {
-        formatAppLog("log", "at pages/user/user.vue:23", "设置按钮被点击了");
+        formatAppLog("log", "at pages/user/user.vue:31", "设置按钮被点击了");
       }
       function handleWalletItemClick(index) {
-        formatAppLog("log", "at pages/user/user.vue:28", "walletItem被点击了：", index);
+        formatAppLog("log", "at pages/user/user.vue:36", "walletItem被点击了：", index);
       }
       return (_ctx, _cache) => {
         const _component_cc_myTabbar = resolveEasycom(vue.resolveDynamicComponent("cc-myTabbar"), __easycom_0);
