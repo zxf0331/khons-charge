@@ -11,8 +11,8 @@ const _sfc_main = {
         num: 525.36
       },
       {
-        itemName: "优惠券(张)",
-        num: 5
+        itemName: "等级",
+        num: 1
       },
       {
         itemName: "我的积分",

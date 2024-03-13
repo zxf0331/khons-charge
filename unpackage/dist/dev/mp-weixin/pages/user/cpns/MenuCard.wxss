@@ -1,10 +1,13 @@
 /* 水平间距 */
 /* 水平间距 */
+ .uni-card__header-content-title span {
+  font-weight: 600;
+}
 .menu-card {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 20rpx;
+  margin: 30rpx;
   border-radius: 26rpx;
   border: 1px solid #DCDCDC;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;

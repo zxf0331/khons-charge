@@ -1,1 +1,1 @@
-<view class=""><view>首页</view><cc-my-tabbar wx:if="{{a}}" u-i="62bf4a9a-0" bind:__l="__l" u-p="{{a}}"></cc-my-tabbar></view>
+<view class="home"><view class="top"><view class="search"><uni-search-bar wx:if="{{a}}" u-i="62bf4a9a-0" bind:__l="__l" u-p="{{a}}"/></view><home-banner wx:if="{{b}}" u-i="62bf4a9a-1" bind:__l="__l" u-p="{{b}}"></home-banner></view><cc-my-tabbar wx:if="{{c}}" u-i="62bf4a9a-2" bind:__l="__l" u-p="{{c}}"></cc-my-tabbar></view>

@@ -1,5 +1,8 @@
 /* 水平间距 */
 /* 水平间距 */
+.data-v-61f40987 .uni-card__header-content-title span {
+  font-weight: 600;
+}
 /* 主要颜色 */
 .page-total.data-v-61f40987 {
   position: fixed;

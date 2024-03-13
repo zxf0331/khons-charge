@@ -2,19 +2,23 @@
 const common_vendor = require("../../../common/vendor.js");
 const _sfc_main = {
   __name: "MenuCard",
-  setup(__props) {
+  emits: ["menuItemClick"],
+  setup(__props, { emit: emits }) {
+    function menuItemClick(index) {
+      emits("menuItemClick", index);
+    }
     const menu = [
       {
         img: "/static/images/menu/order.png",
         title: "我的订单"
       },
       {
-        img: "/static/images/menu/favor.png",
-        title: "我的订单"
+        img: "/static/images/menu/statistics.png",
+        title: "充电数据"
       },
       {
-        img: "/static/images/menu/order.png",
-        title: "我的订单"
+        img: "/static/images/menu/charging.png",
+        title: "即插即充"
       },
       {
         img: "/static/images/menu/favor.png",
@@ -27,8 +31,7 @@ const _sfc_main = {
           return {
             a: item.img,
             b: common_vendor.t(item.title),
-            c: common_vendor.o(() => {
-            }, item),
+            c: common_vendor.o(($event) => menuItemClick(index), item),
             d: item
           };
         })

@@ -1,0 +1,1 @@
+<view class="more-service"><uni-card wx:if="{{b}}" u-s="{{['d']}}" class="card" u-i="7e67b1b2-0" bind:__l="__l" u-p="{{b}}"><view class="card-info"><block wx:for="{{a}}" wx:for-item="item"><view class="menu-item" bindtap="{{item.c}}"><image class="image" src="{{item.a}}" mode="widthFix"></image><text class="title">{{item.b}}</text></view></block></view></uni-card></view>

@@ -5,6 +5,8 @@
   "usingComponents": {
     "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar",
     "user-info": "./cpns/UserInfo",
-    "menu-card": "./cpns/MenuCard"
+    "menu-card": "./cpns/MenuCard",
+    "my-car": "./cpns/MyCar",
+    "more-service": "./cpns/MoreService"
   }
 }

@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "uni-app",
   "usingComponents": {
-    "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar"
+    "uni-search-bar": "../../uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
+    "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar",
+    "home-banner": "./cpns/HomeBanner"
   }
 }

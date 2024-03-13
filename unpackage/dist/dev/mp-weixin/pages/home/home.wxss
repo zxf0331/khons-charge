@@ -1,0 +1,11 @@
+/* 水平间距 */
+/* 水平间距 */
+ .uni-card__header-content-title span {
+  font-weight: 600;
+}
+.home .top {
+  background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
+}
+.home .top .banner {
+  padding: 20rpx;
+}

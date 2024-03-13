@@ -19,6 +19,9 @@
 .icon-set:before {
   content: "\e61c";
 }
+ .uni-card__header-content-title span {
+  font-weight: 600;
+}
 .userinfo {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 }

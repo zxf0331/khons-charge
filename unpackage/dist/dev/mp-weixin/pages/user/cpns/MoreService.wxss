@@ -1,0 +1,28 @@
+/* 水平间距 */
+/* 水平间距 */
+ .uni-card__header-content-title span {
+  font-weight: 600;
+}
+.more-service .card-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.more-service .card-info .menu-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 25%;
+  padding-bottom: 40rpx;
+}
+.more-service .card-info .menu-item .image {
+  width: 70rpx;
+  height: 70rpx;
+}
+.more-service .card-info .menu-item .title {
+  margin-top: 8rpx;
+  font-size: 28rpx;
+  color: #666666;
+}

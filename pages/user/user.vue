@@ -3,7 +3,7 @@
 		<user-info @setClick='handleSetClick' @walletItemClick='handleWalletItemClick'></user-info>
 		<menu-card @menuItemClick='handleMenuItemClick'></menu-card>
 		<my-car @addCarClick='handleAddCarClick'></my-car>
-		<more-service></more-service>
+		<more-service @moreServItemClick='handleServiceClick'></more-service>
 		<cc-myTabbar :tabBarShow="2"></cc-myTabbar>
 	</view>
 </template>
@@ -49,10 +49,16 @@
 	function handleAddCarClick() {
 		console.log("点击了添加爱车");
 	}
+	
+	// 点击更多服务子项
+	function handleServiceClick(index) {
+		console.log("更多服务被点击了：", index);
+	}
 </script>
 
 <style lang="scss">
  	.user {
  		padding-bottom: 240rpx; 
+		
  	}
 </style>

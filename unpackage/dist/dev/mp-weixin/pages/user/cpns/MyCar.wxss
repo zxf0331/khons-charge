@@ -1,0 +1,24 @@
+/* 水平间距 */
+/* 水平间距 */
+ .uni-card__header-content-title span {
+  font-weight: 600;
+}
+ .uni-card {
+  border-radius: 26rpx;
+}
+.mycar .card-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.mycar .card-info .add-image image {
+  width: 120rpx;
+}
+.mycar .card-info .text {
+  margin-left: 16rpx;
+}
+.mycar .card-info .text .title {
+  font-size: 32rpx;
+  font-weight: 500;
+}

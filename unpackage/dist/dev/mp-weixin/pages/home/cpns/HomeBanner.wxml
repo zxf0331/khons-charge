@@ -1,0 +1,1 @@
+<view class="banner"><swiper class="swiper" circular indicator-dots="{{true}}" autoplay="{{true}}"><block wx:for="{{a}}" wx:for-item="item" wx:key="c"><swiper-item bindtap="{{item.b}}"><image class="swiper-item" src="{{item.a}}" mode="widthFix"></image></swiper-item></block></swiper></view>
