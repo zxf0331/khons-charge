@@ -1,162 +1,139 @@
 <template>
-	<view class="main-Location">
-		<!-- 字母区域 -->
-		<view class="Location-Letter">
-			<view hover-class="Click-Latter" @tap="getLetter('ScrollTop')">*</view>
-			<view v-for="(l,i) in LatterName" :key="i" hover-class="Click-Latter" @tap="getLetter(l)"  :style="{'color': LetterId === l ? '#4662D9' : '#000' }">{{l}}</view>
-		</view>
- 
-		<view class="ynq-AutoLocation u_flex jcsb">
-			<view class="ynq-AutoAddress">
-				<text class="ynq ynq-dizhi"></text>
-				<text>当前定位：</text>
-				<text>{{CityName}}</text>
-			</view>
- 
-			<view class="ynq-ReLocation u_flex" @click="getLocationAuth">
-				<!-- <u-icon name="reload" color="#000"></u-icon> -->
-				<text class="ml5">重新定位</text>
-			</view>
-		</view>
-		<scroll-view scroll-y="true" class="ynq-ScrollView" :scroll-into-view="LetterId">
-			<!-- 热门城市 -->
-			<view class="ynq-HotCity" id="ScrollTop">
-				<view class="ynq-HotCityTitle">
-					<text class="ynq ynq-fire"></text>
-					<text>热门城市</text>
-				</view>
-				<view class="ynq-HotCityList flex">
-					<text class="radius-3" @tap="getStorage(item)" v-for="(item,index) in HotCity"
-						:key="index">{{item}}</text>
-				</view>
-			</view>
-			<!-- 城市列表 -->
-			<view class="ynq-CityList">
-				<block v-for="(item,index) in CityList" :key="index">
-					<view class="ynq-CityLetter" :id="item.initial">{{item.initial}}</view>
-					<view class="ynq-CityLine">
-						<text @tap="getStorage(item_city.name)" v-for="(item_city,name_index) in item.list"
-							:key="name_index">{{item_city.name}}</text>
-					</view>
-				</block>
-			</view>
-		</scroll-view>
-	</view>
+    <view class="main-Location">
+        <view class="Location-Letter">
+            <view hover-class="Click-Latter" @tap="getLetter('ScrollTop')">*</view>
+            <view v-for="(l,i) in LatterName" :key="i" hover-class="Click-Latter" @tap="getLetter(l)" :style="{'color': LetterId === l ? '#4662D9' : '#000'}">{{l}}</view>
+        </view>
+        <view class="ynq-AutoLocation u_flex jcsb">
+            <view class="ynq-AutoAddress">
+                <text class="ynq ynq-dizhi"></text>
+                <text>当前定位：</text>
+                <text>{{CityName}}</text>
+            </view>
+            <view class="ynq-ReLocation u_flex" @click="requestLocationPermission">
+                <u-icon name="reload" color="#000"></u-icon>
+                <text class="ml5">重新定位</text>
+            </view>
+        </view>
+        <scroll-view scroll-y="true" class="ynq-ScrollView" :scroll-into-view="LetterId">
+            <view class="ynq-HotCity" id="ScrollTop">
+                <view class="ynq-HotCityTitle">
+                    <text class="ynq ynq-fire"></text>
+                    <text>热门城市</text>
+                </view>
+                <view class="ynq-HotCityList flex">
+                    <text class="radius-3" @tap="getStorage(item)" v-for="(item,index) in HotCity" :key="index">{{item}}</text>
+                </view>
+            </view>
+            <view class="ynq-CityList">
+                <block v-for="(item,index) in CityList" :key="index">
+                    <view class="ynq-CityLetter" :id="item.initial">{{item.initial}}</view>
+                    <view class="ynq-CityLine">
+                        <text @tap="getStorage(item_city.name)" v-for="(item_city,name_index) in item.list" :key="name_index">{{item_city.name}}</text>
+                    </view>
+                </block>
+            </view>
+        </scroll-view>
+    </view>
 </template>
- 
+
 <script>
-	import cityData from './city.json'
-	export default {
-		data() {
-			return {
-				CityName: '北京',
-				HotCity: ['北京', '深圳', '上海', '成都', '广州', '广东'],
-				LatterName: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-					'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-				],
-				CityList: cityData.city, //引用json数据
-				LetterId: '',
-			}
-		},
-		onLoad() {
-			this.getCityName()
-		},
-		methods: {
-			//获取定位点
-			getLetter(name) {
-				this.LetterId = name
-				// uni.pageScrollTo({
-				// 	selector:'#'+name,
-				// 	duration:300
-				// })
-			},
-			//存储城市缓存
-			getStorage(Name) {
-				uni.setStorage({
-					key: 'City_Name',
-					data: Name
-				})
-				this.CityName = Name
-				//跳转返回
-				uni.navigateBack({
-					url: '/pages/home/home'
-				})
-			},
-			//获得城市缓存
-			getCityName() {
-				let _that = this;
-				setTimeout(function() {
-					uni.getStorage({
-						key: 'City_Name',
-						success(res) {
-							_that.CityName = res.data
-						}
-					})
-				}, 500)
-			},
-			//重新定位按钮
-			getLocationAuth() {
-				let that = this;
-				uni.getSystemInfo({
-					success(res) {
-						console.log('getSystemInfo',res);
-						let locationEnabled = res.locationEnabled; //判断手机定位服务是否开启
-						let locationAuthorized = res.locationAuthorized; //判断定位服务是否允许微信授权
-						if (locationEnabled == false || locationAuthorized == false) {
-							//手机定位服务（GPS）未授权
-							uni.showModal({
-								title: '提示',
-								content: '请打开定位服务功能',
-								showCancel: false, // 不显示取消按钮
-								success: (res) => {
-									console.log('showModalres', res);
-								}
-							})
-						} else {
-							uni.authorize({
-								scope: "scope.userLocation", //授权的类型为地理位置	
-								success: (res) => {
-									uni.getLocation({
-										type: 'gcj02',
-										geocode: true,
-										isHighAccuracy: true,
-										accuracy: "best", // 精度值为20m
-										success: function(res) {
-											let lat = res.latitude;
-											let lng = res.longitude;
-											let key = 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON'; //申请地址：https://lbs.qq.com/dev/console/application/mine
-											uni.request({
-												url: 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + lat + ',' + lng + '&key=' + key,
-												method: "GET",
-												success(ress) {
-													let data = ress.data; //获取到所有定位的数据
-													let CityName = ress.data.result.address_component.city
-													that.CityName = CityName
-													let Street = ress.data.result.address_component.street
-													that.CityName = Street
-													uni.setStorage({
-														key: 'City_Name',
-														data: Street
-													})
-												},
-												fail() {
-													uni.showToast({
-														'title': '对不起，数据获取失败！',
-														'icon': 'none'
-													})
-												}
-											})
-										},
-									})
-								},
-							})
-						}
-					}
-				})
-			},
-		},
-	}
+import cityData from './city.json'
+export default {
+    data() {
+        return {
+            CityName: '北京',
+            HotCity: ['北京', '深圳', '上海', '成都', '广州', '广东'],
+            LatterName: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
+            CityList: cityData.city,
+            LetterId: '',
+        }
+    },
+    onLoad() {
+        this.getCityName();
+    },
+    methods: {
+        getLetter(name) {
+            this.LetterId = name;
+        },
+        getStorage(Name) {
+            uni.setStorage({
+                key: 'City_Name',
+                data: Name
+            });
+            this.CityName = Name;
+            uni.navigateBack({
+                url: '/pages/home/home'
+            });
+        },
+        getCityName() {
+            let _that = this;
+            setTimeout(function() {
+                uni.getStorage({
+                    key: 'City_Name',
+                    success(res) {
+                        _that.CityName = res.data;
+                    }
+                });
+            }, 500);
+        },
+        requestLocationPermission() {
+        // #ifdef MP-WEIXIN
+            uni.authorize({
+                scope: 'scope.userLocation',
+                success: () => {
+                    this.getLocation();
+                },
+                fail: this.handleLocationPermissionDenied,
+            });
+            // #endif
+            
+            // #ifdef H5
+            this.getLocation();
+            // #endif
+            
+            // #ifdef APP-PLUS
+            plus.geolocation.getCurrentPosition(this.getLocation, this.handleLocationPermissionDenied, {geocode: true});
+            // #endif
+        },
+        getLocation() {
+            uni.getLocation({
+                type: 'gcj02',
+                success: (res) => {
+					console.log("success");
+                    let lat = res.latitude;
+                    let lng = res.longitude;
+					let key = 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON';
+                    // 这里假设有一个函数根据经纬度获取城市名称，实际需要自行实现
+                    this.getCityByLatLon(lat, lng);
+                },
+                fail: () => {
+					console.log("fail");
+                    uni.showToast({
+                        title: '无法获取位置信息',
+                        icon: 'none'
+                    });
+                }
+            });
+        },
+        handleLocationPermissionDenied() {
+            uni.showModal({
+                title: '位置权限被拒绑',
+                content: '请在系统设置或应用权限管理中允许使用位置信息',
+                showCancel: false
+            });
+        },
+        // 示例方法，根据经纬度获取城市名称
+        getCityByLatLon(lat, lng) {
+            // 这里应实现通过经纬度获取城市名称的逻辑，可能需要调用外部API
+            // 假设获取到的城市名称赋值给CityName
+            // this.CityName = '某城市名称';
+			console.log("成功调用");
+        },
+    },
+}
 </script>
+
  
 <style lang="scss" scoped>
 	.main-Location {

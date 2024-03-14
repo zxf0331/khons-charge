@@ -5838,36 +5838,8 @@ const _sfc_main = {
     return {
       CityName: "北京",
       HotCity: ["北京", "深圳", "上海", "成都", "广州", "广东"],
-      LatterName: [
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-        "G",
-        "H",
-        "I",
-        "J",
-        "K",
-        "L",
-        "M",
-        "N",
-        "O",
-        "P",
-        "Q",
-        "R",
-        "S",
-        "T",
-        "U",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z"
-      ],
+      LatterName: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
       CityList: cityData.city,
-      //引用json数据
       LetterId: ""
     };
   },
@@ -5875,11 +5847,9 @@ const _sfc_main = {
     this.getCityName();
   },
   methods: {
-    //获取定位点
     getLetter(name) {
       this.LetterId = name;
     },
-    //存储城市缓存
     getStorage(Name) {
       common_vendor.index.setStorage({
         key: "City_Name",
@@ -5890,7 +5860,6 @@ const _sfc_main = {
         url: "/pages/home/home"
       });
     },
-    //获得城市缓存
     getCityName() {
       let _that = this;
       setTimeout(function() {
@@ -5902,70 +5871,50 @@ const _sfc_main = {
         });
       }, 500);
     },
-    //重新定位按钮
-    getLocationAuth() {
-      let that = this;
-      common_vendor.index.getSystemInfo({
-        success(res) {
-          console.log("getSystemInfo", res);
-          let locationEnabled = res.locationEnabled;
-          let locationAuthorized = res.locationAuthorized;
-          if (locationEnabled == false || locationAuthorized == false) {
-            common_vendor.index.showModal({
-              title: "提示",
-              content: "请打开定位服务功能",
-              showCancel: false,
-              // 不显示取消按钮
-              success: (res2) => {
-                console.log("showModalres", res2);
-              }
-            });
-          } else {
-            common_vendor.index.authorize({
-              scope: "scope.userLocation",
-              //授权的类型为地理位置	
-              success: (res2) => {
-                common_vendor.index.getLocation({
-                  type: "gcj02",
-                  geocode: true,
-                  isHighAccuracy: true,
-                  accuracy: "best",
-                  // 精度值为20m
-                  success: function(res3) {
-                    let lat = res3.latitude;
-                    let lng = res3.longitude;
-                    let key = "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON";
-                    common_vendor.index.request({
-                      url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + lat + "," + lng + "&key=" + key,
-                      method: "GET",
-                      success(ress) {
-                        ress.data;
-                        let CityName = ress.data.result.address_component.city;
-                        that.CityName = CityName;
-                        let Street = ress.data.result.address_component.street;
-                        that.CityName = Street;
-                        common_vendor.index.setStorage({
-                          key: "City_Name",
-                          data: Street
-                        });
-                      },
-                      fail() {
-                        common_vendor.index.showToast({
-                          "title": "对不起，数据获取失败！",
-                          "icon": "none"
-                        });
-                      }
-                    });
-                  }
-                });
-              }
-            });
-          }
+    requestLocationPermission() {
+      common_vendor.index.authorize({
+        scope: "scope.userLocation",
+        success: () => {
+          this.getLocation();
+        },
+        fail: this.handleLocationPermissionDenied
+      });
+    },
+    getLocation() {
+      common_vendor.index.getLocation({
+        type: "gcj02",
+        success: (res) => {
+          console.log("success");
+          let lat = res.latitude;
+          let lng = res.longitude;
+          this.getCityByLatLon(lat, lng);
+        },
+        fail: () => {
+          console.log("fail");
+          common_vendor.index.showToast({
+            title: "无法获取位置信息",
+            icon: "none"
+          });
         }
       });
+    },
+    handleLocationPermissionDenied() {
+      common_vendor.index.showModal({
+        title: "位置权限被拒绑",
+        content: "请在系统设置或应用权限管理中允许使用位置信息",
+        showCancel: false
+      });
+    },
+    // 示例方法，根据经纬度获取城市名称
+    getCityByLatLon(lat, lng) {
+      console.log("成功调用");
     }
   }
 };
+if (!Array) {
+  const _component_u_icon = common_vendor.resolveComponent("u-icon");
+  _component_u_icon();
+}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o(($event) => $options.getLetter("ScrollTop")),
@@ -5978,15 +5927,19 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     c: common_vendor.t($data.CityName),
-    d: common_vendor.o((...args) => $options.getLocationAuth && $options.getLocationAuth(...args)),
-    e: common_vendor.f($data.HotCity, (item, index, i0) => {
+    d: common_vendor.p({
+      name: "reload",
+      color: "#000"
+    }),
+    e: common_vendor.o((...args) => $options.requestLocationPermission && $options.requestLocationPermission(...args)),
+    f: common_vendor.f($data.HotCity, (item, index, i0) => {
       return {
         a: common_vendor.t(item),
         b: common_vendor.o(($event) => $options.getStorage(item), index),
         c: index
       };
     }),
-    f: common_vendor.f($data.CityList, (item, index, i0) => {
+    g: common_vendor.f($data.CityList, (item, index, i0) => {
       return {
         a: common_vendor.t(item.initial),
         b: item.initial,
@@ -6000,8 +5953,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: index
       };
     }),
-    g: $data.LetterId
+    h: $data.LetterId
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "D:/khons-charge/pages/city/city.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "E:/khons-charge/pages/city/city.vue"]]);
 wx.createPage(MiniProgramPage);
