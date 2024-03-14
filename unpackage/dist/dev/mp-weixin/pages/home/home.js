@@ -25,6 +25,11 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         backgroundColor: "#e0ecfc"
       });
     });
+    function chooseCity() {
+      common_vendor.index.navigateTo({
+        url: "/pages/city/city"
+      });
+    }
     const banners = [
       {
         url: "/static/images/banner/banner1.jpg"
@@ -38,15 +43,16 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
     ];
     return (_ctx, _cache) => {
       return {
-        a: common_vendor.p({
-          placeholder: "站点查询",
+        a: common_vendor.o(chooseCity),
+        b: common_vendor.p({
+          placeholder: "输入目的地/电站名称",
           bgColor: "#ffffff",
           readonly: true
         }),
-        b: common_vendor.p({
+        c: common_vendor.p({
           banners
         }),
-        c: common_vendor.p({
+        d: common_vendor.p({
           tabBarShow: 0
         })
       };

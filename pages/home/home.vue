@@ -2,7 +2,8 @@
 	<view class="home">
 		<view class="top">
 			<view class="search">
-				<uni-search-bar placeholder="站点查询" bgColor="#ffffff" readonly />
+				<button type="default" @click="chooseCity">选择城市</button>
+				<uni-search-bar placeholder="输入目的地/电站名称" bgColor="#ffffff" readonly />
 			</view>
 			<home-banner :banners="banners"></home-banner>
 		</view>
@@ -30,6 +31,11 @@
 		})
 	})
 	
+	function chooseCity() {
+		uni.navigateTo({
+			url: '/pages/city/city'
+		})
+	}
 	// 模拟数据
 	const banners = [
 		{

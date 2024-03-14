@@ -1,0 +1,100 @@
+/* 水平间距 */
+/* 水平间距 */
+[data-v-b6ff804d] .uni-card__header-content-title span {
+  font-weight: 600;
+}
+.main-Location[data-v-b6ff804d] {
+  height: 100vh;
+}
+.ynq-AutoLocation[data-v-b6ff804d] {
+  width: calc(100% - 1.25rem);
+  background: rgba(250, 250, 250, 0.5);
+  padding: 0.625rem 0.625rem;
+}
+.ynq-AutoLocation uni-text.ynq[data-v-b6ff804d] {
+  font-size: 1rem;
+  margin-right: 0.3125rem;
+}
+.ynq-AutoLocation uni-text[data-v-b6ff804d] {
+  font-size: 0.9375rem;
+}
+.ynq-HotCity[data-v-b6ff804d] {
+  padding: 0.625rem;
+}
+.ynq-HotCityTitle[data-v-b6ff804d] {
+  padding: 0 0;
+}
+.ynq-HotCityTitle uni-text.ynq[data-v-b6ff804d] {
+  margin-right: 0.3125rem;
+  color: #ff0000;
+  font-size: 1rem;
+}
+.ynq-HotCityTitle uni-text[data-v-b6ff804d] {
+  font-size: 0.9375rem;
+}
+.ynq-HotCityList[data-v-b6ff804d] {
+  padding: 0.625rem 0 0 0;
+  flex-wrap: wrap !important;
+}
+.ynq-HotCityList uni-text[data-v-b6ff804d] {
+  width: 5.9375rem;
+  display: inline-block;
+  text-align: center;
+  background: rgba(200, 200, 200, 0.2);
+  font-size: 0.8125rem;
+  margin: 0.3125rem;
+  padding: 0.625rem 0.3125rem;
+}
+.Location-Letter[data-v-b6ff804d] {
+  position: fixed;
+  right: 0.15625rem;
+  top: 5.625rem;
+  width: 0.9375rem;
+  z-index: 100;
+}
+.Location-Letter uni-view[data-v-b6ff804d] {
+  display: block;
+  width: 0.9375rem;
+  text-align: center;
+  height: 1.09375rem;
+  line-height: 1.09375rem;
+  font-size: 0.6875rem;
+  transition: ease 0.3s;
+  -webkit-transition: ease 0.3s;
+}
+.ynq-CityList[data-v-b6ff804d] {
+  padding: 0px 1.25rem 0 0.625rem;
+}
+.ynq-CityList .ynq-CityLetter[data-v-b6ff804d] {
+  line-height: 0.9375rem;
+  height: 1.25rem;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #f7f7f7;
+  padding-left: 0.3125rem;
+  color: #909090;
+}
+.ynq-CityList .ynq-CityLine[data-v-b6ff804d] {
+  margin: 0.625rem 0px;
+}
+.ynq-CityList .ynq-CityLine uni-text[data-v-b6ff804d] {
+  display: block;
+  line-height: 1.875rem;
+  padding: 0px 0.3125rem;
+  font-size: 0.9375rem;
+  color: #767676;
+}
+.ynq-CityList .ynq-CityLine uni-text[data-v-b6ff804d]:nth-child(even) {
+  background-color: rgba(200, 200, 200, 0.12);
+}
+.ynq-ScrollView[data-v-b6ff804d] {
+  height: calc(100vh - 5rem);
+}
+.Click-Latter[data-v-b6ff804d] {
+  font-size: 0.9375rem !important;
+}
+.jcsb[data-v-b6ff804d] {
+  justify-content: space-between;
+}
+.u_flex[data-v-b6ff804d] {
+  display: flex;
+}

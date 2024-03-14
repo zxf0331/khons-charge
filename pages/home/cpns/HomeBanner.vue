@@ -3,7 +3,7 @@
 		<swiper class="swiper" circular :indicator-dots="true" :autoplay="true">
 			<template v-for='item in banners' :key='item'>
 				<swiper-item @click="handleItemClick(item)">
-					<image class="swiper-item" :src='item.url' mode='widthFix'></image>
+					<image class="swiper-item" :src='item.url' mode="aspectFill"></image>
 				</swiper-item>
 			</template>
 		</swiper>
@@ -21,8 +21,17 @@
 
 <style lang="scss">
 	.banner {
-		.swiper-item {
-			width: 140%;
+		.swiper {
+			height: 240rpx;
 		}
+		.swiper-item {
+		    width: 100%; 
+		    height: 100%; 
+		
+		    image {
+		      width: 100%;
+		      height: 100%;
+		    }
+		  }
 	}
 </style>

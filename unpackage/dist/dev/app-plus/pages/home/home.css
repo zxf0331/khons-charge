@@ -580,7 +580,7 @@
   align-items: center;
   width: 100%;
   height: 3.75rem;
-  padding-bottom: 10px;
+  padding-bottom: 0.625rem;
   background-color: #FFFFFF;
 }
 .tab-list .list[data-v-61f40987] {
@@ -588,7 +588,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 20%;
+  width: 30%;
   height: 5.625rem;
 }
 .tab-list .list uni-image[data-v-61f40987] {
@@ -609,8 +609,16 @@
 [data-v-df9ec71b] .uni-card__header-content-title span {
   font-weight: 600;
 }
+.banner .swiper[data-v-df9ec71b] {
+  height: 7.5rem;
+}
 .banner .swiper-item[data-v-df9ec71b] {
-  width: 140%;
+  width: 100%;
+  height: 100%;
+}
+.banner .swiper-item uni-image[data-v-df9ec71b] {
+  width: 100%;
+  height: 100%;
 }
 /* 水平间距 */
 /* 水平间距 */

@@ -8,7 +8,7 @@ const _sfc_main = {
           index: 0,
           name: "首页",
           img: "/static/images/tabbar/home.png",
-          acImg: "/static/images/tabbar/home_act.png"
+          acImg: "/static/images/tabbar/home_select.png"
         },
         {
           index: 1,

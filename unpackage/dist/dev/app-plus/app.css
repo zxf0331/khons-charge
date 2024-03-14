@@ -2,22 +2,6 @@
 
 /* 水平间距 */
 /* 水平间距 */
-@font-face {
-  font-family: "customicons"; /* Project id 2878519 */
-  src:url('static/customicons.ttf') format('truetype');
-}
-.customicons {
-  font-family: "customicons" !important;
-}
-.youxi:before {
-  content: "\e60e";
-}
-.wenjian:before {
-  content: "\e60f";
-}
-.zhuanfa:before {
-  content: "\e610";
-}
  .uni-card__header-content-title span {
   font-weight: 600;
 }

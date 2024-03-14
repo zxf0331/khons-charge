@@ -16,7 +16,7 @@
   align-items: center;
   width: 100%;
   height: 120rpx;
-  padding-bottom: 10px;
+  padding-bottom: 20rpx;
   background-color: #FFFFFF;
 }
 .tab-list .list.data-v-61f40987 {
@@ -24,7 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 20%;
+  width: 30%;
   height: 180rpx;
 }
 .tab-list .list image.data-v-61f40987 {
