@@ -498,7 +498,7 @@
 .uniui-cart[data-v-d31e1c47]:before {
   content: "\e631";
 }
-[data-v-d31e1c47] .uni-card__header-content-title span {
+[data-v-d31e1c47] .uni-card__header-content-title {
   font-weight: 600;
 }
 @font-face {
@@ -512,7 +512,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-f07ef577] .uni-card__header-content-title span {
+[data-v-f07ef577] .uni-card__header-content-title {
   font-weight: 600;
 }
 .uni-searchbar[data-v-f07ef577] {
@@ -564,7 +564,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-61f40987] .uni-card__header-content-title span {
+[data-v-61f40987] .uni-card__header-content-title {
   font-weight: 600;
 }
 /* 主要颜色 */
@@ -606,7 +606,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-df9ec71b] .uni-card__header-content-title span {
+[data-v-df9ec71b] .uni-card__header-content-title {
   font-weight: 600;
 }
 .banner .swiper[data-v-df9ec71b] {
@@ -622,7 +622,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
- .uni-card__header-content-title span {
+ .uni-card__header-content-title {
   font-weight: 600;
 }
 .home .top {

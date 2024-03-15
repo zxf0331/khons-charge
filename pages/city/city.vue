@@ -11,7 +11,6 @@
                 <text>{{CityName}}</text>
             </view>
             <view class="ynq-ReLocation u_flex" @click="requestLocationPermission">
-                <u-icon name="reload" color="#000"></u-icon>
                 <text class="ml5">重新定位</text>
             </view>
         </view>
@@ -39,6 +38,7 @@
 
 <script>
 import cityData from './city.json'
+import {jsonp} from 'vue-jsonp';
 export default {
     data() {
         return {
@@ -47,6 +47,7 @@ export default {
             LatterName: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
             CityList: cityData.city,
             LetterId: '',
+			key: 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON'
         }
     },
     onLoad() {
@@ -82,6 +83,7 @@ export default {
             uni.authorize({
                 scope: 'scope.userLocation',
                 success: () => {
+					console.log("有权限");
                     this.getLocation();
                 },
                 fail: this.handleLocationPermissionDenied,
@@ -96,6 +98,26 @@ export default {
             plus.geolocation.getCurrentPosition(this.getLocation, this.handleLocationPermissionDenied, {geocode: true});
             // #endif
         },
+		H5getCityByLatLon(lat, lng) {
+			let that = this
+			const params = {
+			      headers: {"content-type": "application/xml"},
+			      callbackQuery: "callbackParam",
+			      callbackName: "jsonpCallback"
+			    }
+				 let url = `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${this.key}&output=jsonp&callback="jsonpCallback`; 
+				 jsonp(url, params).then(res => {
+				   let data = res.data
+				   let CityName = res.result.ad_info.city
+				   that.CityName = CityName
+				   uni.setStorage({
+				   	key: 'City_Name',
+				   	data: CityName
+				   })
+				 }).catch(err => {
+				   console.log('err', err);
+				 })
+		},
         getLocation() {
             uni.getLocation({
                 type: 'gcj02',
@@ -103,24 +125,40 @@ export default {
 					console.log("success");
                     let lat = res.latitude;
                     let lng = res.longitude;
-					let key = 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON';
+					// let key = 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON';
                     // 这里假设有一个函数根据经纬度获取城市名称，实际需要自行实现
-                    this.getCityByLatLon(lat, lng);
+					// #ifndef H5
+					this.getCityByLatLon(lat, lng);
+					// #endif
+					
+					// #ifdef H5
+					this.H5getCityByLatLon(lat, lng);
+					// #endif
                 },
-                fail: () => {
-					console.log("fail");
+                fail: (errMsg) => {
+					console.log(errMsg);
                     uni.showToast({
                         title: '无法获取位置信息',
                         icon: 'none'
                     });
                 }
-            });
+            });	
         },
         handleLocationPermissionDenied() {
             uni.showModal({
                 title: '位置权限被拒绑',
                 content: '请在系统设置或应用权限管理中允许使用位置信息',
-                showCancel: false
+				confirmText: "确认",
+				cancelText: "取消",
+				success: function(res) {
+					if (res.confirm) {
+						uni.openSetting({
+							success() {
+								uni.getLocation();
+							}
+						})
+					}
+				}
             });
         },
         // 示例方法，根据经纬度获取城市名称
@@ -128,7 +166,31 @@ export default {
             // 这里应实现通过经纬度获取城市名称的逻辑，可能需要调用外部API
             // 假设获取到的城市名称赋值给CityName
             // this.CityName = '某城市名称';
-			console.log("成功调用");
+			console.log("成功调用",lat,lng);
+			console.log(this.key);
+			let that = this
+			uni.request({
+				url: 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + lat + ',' + lng + '&key=' +this.key,
+				method: "GET",
+				success(ress) {
+					console.log(ress);
+					let data = ress.data; //获取到所有定位的数据
+					let CityName = ress.data.result.address_component.city
+					that.CityName = CityName
+					// let Street = ress.data.result.address_component.street
+					// that.CityName = Street
+					uni.setStorage({
+						key: 'City_Name',
+						data: CityName
+					})
+				},
+				fail() {
+					uni.showToast({
+						'title': '对不起，数据获取失败！',
+						'icon': 'none'
+					})
+				}
+			})
         },
     },
 }

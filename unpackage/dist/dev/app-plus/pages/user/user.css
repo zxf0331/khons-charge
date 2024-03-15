@@ -1,6 +1,6 @@
 /* 水平间距 */
 /* 水平间距 */
-[data-v-61f40987] .uni-card__header-content-title span {
+[data-v-61f40987] .uni-card__header-content-title {
   font-weight: 600;
 }
 /* 主要颜色 */
@@ -61,7 +61,7 @@
 .icon-set[data-v-23f92721]:before {
   content: "\e61c";
 }
-[data-v-23f92721] .uni-card__header-content-title span {
+[data-v-23f92721] .uni-card__header-content-title {
   font-weight: 600;
 }
 .userinfo[data-v-23f92721] {
@@ -129,7 +129,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-ecdae198] .uni-card__header-content-title span {
+[data-v-ecdae198] .uni-card__header-content-title {
   font-weight: 600;
 }
 .menu-card[data-v-ecdae198] {
@@ -159,7 +159,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-ae4bee67] .uni-card__header-content-title span {
+[data-v-ae4bee67] .uni-card__header-content-title {
   font-weight: 600;
 }
 .uni-card[data-v-ae4bee67] {
@@ -263,7 +263,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-01e53afa] .uni-card__header-content-title span {
+[data-v-01e53afa] .uni-card__header-content-title {
   font-weight: 600;
 }
 [data-v-01e53afa] .uni-card {
@@ -287,7 +287,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-5fce1903] .uni-card__header-content-title span {
+[data-v-5fce1903] .uni-card__header-content-title {
   font-weight: 600;
 }
 .more-service .card-info[data-v-5fce1903] {
@@ -315,7 +315,7 @@
 }
 /* 水平间距 */
 /* 水平间距 */
- .uni-card__header-content-title span {
+ .uni-card__header-content-title {
   font-weight: 600;
 }
 .user {
