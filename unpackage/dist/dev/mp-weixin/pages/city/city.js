@@ -5840,7 +5840,8 @@ const _sfc_main = {
       HotCity: ["北京", "深圳", "上海", "成都", "广州", "广东"],
       LatterName: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
       CityList: cityData.city,
-      LetterId: ""
+      LetterId: "",
+      key: "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON"
     };
   },
   onLoad() {
@@ -5875,9 +5876,30 @@ const _sfc_main = {
       common_vendor.index.authorize({
         scope: "scope.userLocation",
         success: () => {
+          console.log("有权限");
           this.getLocation();
         },
         fail: this.handleLocationPermissionDenied
+      });
+    },
+    H5getCityByLatLon(lat, lng) {
+      let that = this;
+      const params = {
+        headers: { "content-type": "application/xml" },
+        callbackQuery: "callbackParam",
+        callbackName: "jsonpCallback"
+      };
+      let url = `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${this.key}&output=jsonp&callback="jsonpCallback`;
+      common_vendor.o$1(url, params).then((res) => {
+        res.data;
+        let CityName = res.result.ad_info.city;
+        that.CityName = CityName;
+        common_vendor.index.setStorage({
+          key: "City_Name",
+          data: CityName
+        });
+      }).catch((err) => {
+        console.log("err", err);
       });
     },
     getLocation() {
@@ -5889,8 +5911,8 @@ const _sfc_main = {
           let lng = res.longitude;
           this.getCityByLatLon(lat, lng);
         },
-        fail: () => {
-          console.log("fail");
+        fail: (errMsg) => {
+          console.log(errMsg);
           common_vendor.index.showToast({
             title: "无法获取位置信息",
             icon: "none"
@@ -5902,19 +5924,47 @@ const _sfc_main = {
       common_vendor.index.showModal({
         title: "位置权限被拒绑",
         content: "请在系统设置或应用权限管理中允许使用位置信息",
-        showCancel: false
+        confirmText: "确认",
+        cancelText: "取消",
+        success: function(res) {
+          if (res.confirm) {
+            common_vendor.index.openSetting({
+              success() {
+                common_vendor.index.getLocation();
+              }
+            });
+          }
+        }
       });
     },
     // 示例方法，根据经纬度获取城市名称
     getCityByLatLon(lat, lng) {
-      console.log("成功调用");
+      console.log("成功调用", lat, lng);
+      console.log(this.key);
+      let that = this;
+      common_vendor.index.request({
+        url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + lat + "," + lng + "&key=" + this.key,
+        method: "GET",
+        success(ress) {
+          console.log(ress);
+          ress.data;
+          let CityName = ress.data.result.address_component.city;
+          that.CityName = CityName;
+          common_vendor.index.setStorage({
+            key: "City_Name",
+            data: CityName
+          });
+        },
+        fail() {
+          common_vendor.index.showToast({
+            "title": "对不起，数据获取失败！",
+            "icon": "none"
+          });
+        }
+      });
     }
   }
 };
-if (!Array) {
-  const _component_u_icon = common_vendor.resolveComponent("u-icon");
-  _component_u_icon();
-}
 function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
   return {
     a: common_vendor.o(($event) => $options.getLetter("ScrollTop")),
@@ -5927,19 +5977,15 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
       };
     }),
     c: common_vendor.t($data.CityName),
-    d: common_vendor.p({
-      name: "reload",
-      color: "#000"
-    }),
-    e: common_vendor.o((...args) => $options.requestLocationPermission && $options.requestLocationPermission(...args)),
-    f: common_vendor.f($data.HotCity, (item, index, i0) => {
+    d: common_vendor.o((...args) => $options.requestLocationPermission && $options.requestLocationPermission(...args)),
+    e: common_vendor.f($data.HotCity, (item, index, i0) => {
       return {
         a: common_vendor.t(item),
         b: common_vendor.o(($event) => $options.getStorage(item), index),
         c: index
       };
     }),
-    g: common_vendor.f($data.CityList, (item, index, i0) => {
+    f: common_vendor.f($data.CityList, (item, index, i0) => {
       return {
         a: common_vendor.t(item.initial),
         b: item.initial,
@@ -5953,8 +5999,8 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         d: index
       };
     }),
-    h: $data.LetterId
+    g: $data.LetterId
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "E:/khons-charge/pages/city/city.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "D:/khons-charge/pages/city/city.vue"]]);
 wx.createPage(MiniProgramPage);

@@ -1583,7 +1583,7 @@ if (uni.restoreGlobal) {
     "zh-Hant": zhHant
   };
   const {
-    t
+    t: t$1
   } = initVueI18n(messages);
   const _sfc_main$c = {
     name: "UniSearchBar",
@@ -1643,10 +1643,10 @@ if (uni.restoreGlobal) {
     },
     computed: {
       cancelTextI18n() {
-        return this.cancelText || t("uni-search-bar.cancel");
+        return this.cancelText || t$1("uni-search-bar.cancel");
       },
       placeholderText() {
-        return this.placeholder || t("uni-search-bar.placeholder");
+        return this.placeholder || t$1("uni-search-bar.placeholder");
       }
     },
     watch: {
@@ -1718,8 +1718,8 @@ if (uni.restoreGlobal) {
           value: this.searchVal
         });
       },
-      emitFocus(e) {
-        this.$emit("focus", e.detail);
+      emitFocus(e2) {
+        this.$emit("focus", e2.detail);
       }
     }
   };
@@ -8340,53 +8340,80 @@ if (uni.restoreGlobal) {
   const cityData = {
     city
   };
+  function e(t2, n) {
+    t2 = t2.replace(/=/g, "");
+    var o2 = [];
+    switch (n.constructor) {
+      case String:
+      case Number:
+      case Boolean:
+        o2.push(encodeURIComponent(t2) + "=" + encodeURIComponent(n));
+        break;
+      case Array:
+        n.forEach(function(n2) {
+          o2 = o2.concat(e(t2 + "[]=", n2));
+        });
+        break;
+      case Object:
+        Object.keys(n).forEach(function(r) {
+          var a = n[r];
+          o2 = o2.concat(e(t2 + "[" + r + "]", a));
+        });
+    }
+    return o2;
+  }
+  function t(e2) {
+    var n = [];
+    return e2.forEach(function(e3) {
+      "string" == typeof e3 ? n.push(e3) : n = n.concat(t(e3));
+    }), n;
+  }
+  function o(n, o2, r) {
+    if (void 0 === o2 && (o2 = {}), "string" != typeof n)
+      throw new Error('[Vue-jsonp] Type of param "url" is not string.');
+    if ("object" != typeof o2 || !o2)
+      throw new Error("[Vue-jsonp] Invalid params, should be an object.");
+    return r = "number" == typeof r ? r : 5e3, new Promise(function(a, c) {
+      var u = "string" == typeof o2.callbackQuery ? o2.callbackQuery : "callback", i = "string" == typeof o2.callbackName ? o2.callbackName : "jsonp_" + (Math.floor(1e5 * Math.random()) * Date.now()).toString(16);
+      o2[u] = i, delete o2.callbackQuery, delete o2.callbackName;
+      var s = [];
+      Object.keys(o2).forEach(function(t2) {
+        s = s.concat(e(t2, o2[t2]));
+      });
+      var l = t(s).join("&"), f = function() {
+        p(), clearTimeout(m), c({ status: 400, statusText: "Bad Request" });
+      }, p = function() {
+        b.removeEventListener("error", f);
+      }, d = function() {
+        document.body.removeChild(b), delete window[i];
+      }, m = null;
+      r > -1 && (m = setTimeout(function() {
+        p(), d(), c({ statusText: "Request Timeout", status: 408 });
+      }, r)), window[i] = function(e2) {
+        clearTimeout(m), p(), d(), a(e2);
+      };
+      var b = document.createElement("script");
+      b.addEventListener("error", f), b.src = n + (/\?/.test(n) ? "&" : "?") + l, document.body.appendChild(b);
+    });
+  }
   const _sfc_main$1 = {
     data() {
       return {
         CityName: "北京",
         HotCity: ["北京", "深圳", "上海", "成都", "广州", "广东"],
-        LatterName: [
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I",
-          "J",
-          "K",
-          "L",
-          "M",
-          "N",
-          "O",
-          "P",
-          "Q",
-          "R",
-          "S",
-          "T",
-          "U",
-          "V",
-          "W",
-          "X",
-          "Y",
-          "Z"
-        ],
+        LatterName: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
         CityList: cityData.city,
-        //引用json数据
-        LetterId: ""
+        LetterId: "",
+        key: "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON"
       };
     },
     onLoad() {
       this.getCityName();
     },
     methods: {
-      //获取定位点
       getLetter(name) {
         this.LetterId = name;
       },
-      //存储城市缓存
       getStorage(Name) {
         uni.setStorage({
           key: "City_Name",
@@ -8397,7 +8424,6 @@ if (uni.restoreGlobal) {
           url: "/pages/home/home"
         });
       },
-      //获得城市缓存
       getCityName() {
         let _that = this;
         setTimeout(function() {
@@ -8409,65 +8435,87 @@ if (uni.restoreGlobal) {
           });
         }, 500);
       },
-      //重新定位按钮
-      getLocationAuth() {
+      requestLocationPermission() {
+        plus.geolocation.getCurrentPosition(this.getLocation, this.handleLocationPermissionDenied, { geocode: true });
+      },
+      H5getCityByLatLon(lat, lng) {
         let that = this;
-        uni.getSystemInfo({
-          success(res) {
-            formatAppLog("log", "at pages/city/city.vue:102", "getSystemInfo", res);
-            let locationEnabled = res.locationEnabled;
-            let locationAuthorized = res.locationAuthorized;
-            if (locationEnabled == false || locationAuthorized == false) {
-              uni.showModal({
-                title: "提示",
-                content: "请打开定位服务功能",
-                showCancel: false,
-                // 不显示取消按钮
-                success: (res2) => {
-                  formatAppLog("log", "at pages/city/city.vue:112", "showModalres", res2);
-                }
-              });
-            } else {
-              uni.authorize({
-                scope: "scope.userLocation",
-                //授权的类型为地理位置	
-                success: (res2) => {
-                  uni.getLocation({
-                    type: "gcj02",
-                    geocode: true,
-                    isHighAccuracy: true,
-                    accuracy: "best",
-                    // 精度值为20m
-                    success: function(res3) {
-                      let lat = res3.latitude;
-                      let lng = res3.longitude;
-                      let key = "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON";
-                      uni.request({
-                        url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + lat + "," + lng + "&key=" + key,
-                        method: "GET",
-                        success(ress) {
-                          ress.data;
-                          let CityName = ress.data.result.address_component.city;
-                          that.CityName = CityName;
-                          let Street = ress.data.result.address_component.street;
-                          that.CityName = Street;
-                          uni.setStorage({
-                            key: "City_Name",
-                            data: Street
-                          });
-                        },
-                        fail() {
-                          uni.showToast({
-                            "title": "对不起，数据获取失败！",
-                            "icon": "none"
-                          });
-                        }
-                      });
-                    }
-                  });
+        const params = {
+          headers: { "content-type": "application/xml" },
+          callbackQuery: "callbackParam",
+          callbackName: "jsonpCallback"
+        };
+        let url = `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${this.key}&output=jsonp&callback="jsonpCallback`;
+        o(url, params).then((res) => {
+          res.data;
+          let CityName = res.result.ad_info.city;
+          that.CityName = CityName;
+          uni.setStorage({
+            key: "City_Name",
+            data: CityName
+          });
+        }).catch((err) => {
+          formatAppLog("log", "at pages/city/city.vue:118", "err", err);
+        });
+      },
+      getLocation() {
+        uni.getLocation({
+          type: "gcj02",
+          success: (res) => {
+            formatAppLog("log", "at pages/city/city.vue:125", "success");
+            let lat = res.latitude;
+            let lng = res.longitude;
+            this.getCityByLatLon(lat, lng);
+          },
+          fail: (errMsg) => {
+            formatAppLog("log", "at pages/city/city.vue:139", errMsg);
+            uni.showToast({
+              title: "无法获取位置信息",
+              icon: "none"
+            });
+          }
+        });
+      },
+      handleLocationPermissionDenied() {
+        uni.showModal({
+          title: "位置权限被拒绑",
+          content: "请在系统设置或应用权限管理中允许使用位置信息",
+          confirmText: "确认",
+          cancelText: "取消",
+          success: function(res) {
+            if (res.confirm) {
+              uni.openSetting({
+                success() {
+                  uni.getLocation();
                 }
               });
             }
+          }
+        });
+      },
+      // 示例方法，根据经纬度获取城市名称
+      getCityByLatLon(lat, lng) {
+        formatAppLog("log", "at pages/city/city.vue:169", "成功调用", lat, lng);
+        formatAppLog("log", "at pages/city/city.vue:170", this.key);
+        let that = this;
+        uni.request({
+          url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + lat + "," + lng + "&key=" + this.key,
+          method: "GET",
+          success(ress) {
+            formatAppLog("log", "at pages/city/city.vue:176", ress);
+            ress.data;
+            let CityName = ress.data.result.address_component.city;
+            that.CityName = CityName;
+            uni.setStorage({
+              key: "City_Name",
+              data: CityName
+            });
+          },
+          fail() {
+            uni.showToast({
+              "title": "对不起，数据获取失败！",
+              "icon": "none"
+            });
           }
         });
       }
@@ -8475,7 +8523,6 @@ if (uni.restoreGlobal) {
   };
   function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     return vue.openBlock(), vue.createElementBlock("view", { class: "main-Location" }, [
-      vue.createCommentVNode(" 字母区域 "),
       vue.createElementVNode("view", { class: "Location-Letter" }, [
         vue.createElementVNode("view", {
           "hover-class": "Click-Latter",
@@ -8510,9 +8557,8 @@ if (uni.restoreGlobal) {
         ]),
         vue.createElementVNode("view", {
           class: "ynq-ReLocation u_flex",
-          onClick: _cache[1] || (_cache[1] = (...args) => $options.getLocationAuth && $options.getLocationAuth(...args))
+          onClick: _cache[1] || (_cache[1] = (...args) => $options.requestLocationPermission && $options.requestLocationPermission(...args))
         }, [
-          vue.createCommentVNode(' <u-icon name="reload" color="#000"></u-icon> '),
           vue.createElementVNode("text", { class: "ml5" }, "重新定位")
         ])
       ]),
@@ -8521,7 +8567,6 @@ if (uni.restoreGlobal) {
         class: "ynq-ScrollView",
         "scroll-into-view": $data.LetterId
       }, [
-        vue.createCommentVNode(" 热门城市 "),
         vue.createElementVNode("view", {
           class: "ynq-HotCity",
           id: "ScrollTop"
@@ -8546,7 +8591,6 @@ if (uni.restoreGlobal) {
             ))
           ])
         ]),
-        vue.createCommentVNode(" 城市列表 "),
         vue.createElementVNode("view", { class: "ynq-CityList" }, [
           (vue.openBlock(true), vue.createElementBlock(
             vue.Fragment,

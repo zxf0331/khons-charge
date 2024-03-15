@@ -42,7 +42,14 @@
             },
             "ios" : {},
             /* ios打包配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "maps" : {},
+                "geolocation" : {
+                    "system" : {
+                        "__platform__" : [ "ios", "android" ]
+                    }
+                }
+            }
         }
     },
     /* SDK配置 */
@@ -59,7 +66,35 @@
             "scope.userLocation" : {
                 "desc" : "获取用户位置信息"
             }
-        }
+        },
+        "requiredPrivateInfos" : [ "getLocation" ]
     },
-    "vueVersion" : "3"
+    "vueVersion" : "3",
+    "h5" : {
+        "sdkConfigs" : {
+            "maps" : {
+                "qqmap" : {
+                    "key" : "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON"
+                }
+            }
+        },
+        "devServer" : {
+            "proxy" : {
+                "/apis" : {
+                    "target" : "https://apis.map.qq.com",
+                    "changeOrigin" : true,
+                    "secure" : true,
+                    "pathRewrite" : {
+                        "^/apis" : ""
+                    }
+                }
+            }
+        }
+    }
 }
+// "maps" : {
+//     "qqmap" : {
+//         "key" : "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON"
+//     }
+// }
+

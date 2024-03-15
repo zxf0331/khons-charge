@@ -38,5 +38,8 @@
       "desc": "获取用户位置信息"
     }
   },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
   "usingComponents": {}
 }

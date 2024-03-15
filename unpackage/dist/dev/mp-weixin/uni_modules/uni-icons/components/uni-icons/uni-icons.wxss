@@ -498,7 +498,7 @@
 .uniui-cart:before {
   content: "\e631";
 }
- .uni-card__header-content-title span {
+ .uni-card__header-content-title {
   font-weight: 600;
 }
 @font-face {

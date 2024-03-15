@@ -19,7 +19,7 @@
 .icon-set:before {
   content: "\e61c";
 }
- .uni-card__header-content-title span {
+ .uni-card__header-content-title {
   font-weight: 600;
 }
 .userinfo {

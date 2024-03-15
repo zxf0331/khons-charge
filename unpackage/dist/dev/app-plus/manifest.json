@@ -62,6 +62,15 @@
       },
       "apple": {},
       "plugins": {
+        "maps": {},
+        "geolocation": {
+          "system": {
+            "__platform__": [
+              "ios",
+              "android"
+            ]
+          }
+        },
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"
