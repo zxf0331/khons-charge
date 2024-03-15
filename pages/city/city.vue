@@ -59,7 +59,7 @@ export default {
         getStorage(Name) {
             uni.setStorage({
                 key: 'City_Name',
-                data: Name
+                data: Name	
             });
             this.CityName = Name;
             uni.navigateBack({
