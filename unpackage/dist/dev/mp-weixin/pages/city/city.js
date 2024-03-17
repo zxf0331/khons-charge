@@ -6002,5 +6002,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     g: $data.LetterId
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "D:/khons-charge/pages/city/city.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "E:/khons-charge/pages/city/city.vue"]]);
 wx.createPage(MiniProgramPage);

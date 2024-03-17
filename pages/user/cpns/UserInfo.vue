@@ -62,7 +62,6 @@
 </script>
 
 <style lang='scss'>
-	@import '@/static/iconfont/iconfont.css';
 
 	.userinfo {
 		background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);

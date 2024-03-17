@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "23949899",
+      "name": "倒三角",
+      "font_class": "triangle",
+      "unicode": "e8d8",
+      "unicode_decimal": 59608
+    },
+    {
       "icon_id": "4437608",
       "name": "right-arrow",
       "font_class": "right-arrow",

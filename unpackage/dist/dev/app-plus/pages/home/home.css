@@ -628,6 +628,26 @@
 .home .top {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 }
+.home .top .search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.625rem;
+}
+.home .top .search .city {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex: 1;
+}
+.home .top .search .city .icon-triangle {
+  padding-top: 0.125rem;
+  font-size: 1rem;
+}
+.home .top .search .search_bar {
+  flex: 5.5;
+}
 .home .top .banner {
   padding: 0.625rem;
 }

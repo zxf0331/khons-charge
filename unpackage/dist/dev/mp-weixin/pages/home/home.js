@@ -30,6 +30,11 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         url: "/pages/city/city"
       });
     }
+    function searchBarClick() {
+      common_vendor.index.navigateTo({
+        url: "/pages/search/search"
+      });
+    }
     const banners = [
       {
         url: "/static/images/banner/banner1.jpg"
@@ -44,20 +49,22 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
     return (_ctx, _cache) => {
       return {
         a: common_vendor.o(chooseCity),
-        b: common_vendor.p({
+        b: common_vendor.o(searchBarClick),
+        c: common_vendor.p({
           placeholder: "输入目的地/电站名称",
+          radius: "20",
           bgColor: "#ffffff",
           readonly: true
         }),
-        c: common_vendor.p({
+        d: common_vendor.p({
           banners
         }),
-        d: common_vendor.p({
+        e: common_vendor.p({
           tabBarShow: 0
         })
       };
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/khons-charge/pages/home/home.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "E:/khons-charge/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

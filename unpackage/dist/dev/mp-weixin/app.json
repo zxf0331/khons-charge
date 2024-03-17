@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/scan/scan",
     "pages/user/user",
-    "pages/city/city"
+    "pages/city/city",
+    "pages/search/search"
   ],
   "window": {
     "navigationBarTextStyle": "black",

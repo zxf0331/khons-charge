@@ -28,6 +28,14 @@
 				"navigationBarTitleText" : "选择城市",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/search/search",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"globalStyle": {
