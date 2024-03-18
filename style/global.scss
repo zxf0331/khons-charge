@@ -7,6 +7,9 @@ $gNormalColor: #666;
 $gBgColor:#f2f2f2;
 $gFontSize: 28rpx;
 $gFontColor: #666666;
+$gRadius: 26rpx;
+$gBorder: 1px solid #DCDCDC;
+$gShadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
 
 // 定义混合
 @mixin normalFlex($direction: row, $justify: space-between) {

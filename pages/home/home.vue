@@ -132,7 +132,7 @@
 		}
 		
 		.charge_station {
-			margin: 0 40rpx;
+			margin: 0 30rpx;
 			.top_area {
 				@include normalFlex()
 			}

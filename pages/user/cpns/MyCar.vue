@@ -28,7 +28,7 @@
 
 <style lang="scss">
 	::v-deep .uni-card {
-		border-radius: 26rpx;
+		border-radius: $gRadius;
 	}
 
 	.mycar {

@@ -601,10 +601,59 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border: 1px solid #DCDCDC;
+  border-radius: 0.8125rem;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+  height: 6.25rem;
+  padding: 0.625rem;
+}
+.station_list .img[data-v-a752d9d6] {
+  flex: 1;
 }
 .station_list .img uni-image[data-v-a752d9d6] {
-  width: 5rem;
-  height: 5rem;
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 0.8125rem;
+}
+.station_list .content[data-v-a752d9d6] {
+  flex: 2.5;
+  margin-left: 0.5rem;
+}
+.station_list .content .name[data-v-a752d9d6] {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.125rem;
+}
+.station_list .content .address[data-v-a752d9d6] {
+  font-size: 0.75rem;
+  color: #666666;
+  margin-bottom: 0.1875rem;
+}
+.station_list .content .price[data-v-a752d9d6] {
+  font-size: 0.75rem;
+  color: red;
+  margin-bottom: 0.25rem;
+}
+.station_list .content .status[data-v-a752d9d6] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+.station_list .content .status .distance[data-v-a752d9d6] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 0.5625rem;
+  background-color: #e7eef6;
+  padding: 0.0625rem;
+}
+.station_list .content .status .distance .icon-navigation[data-v-a752d9d6] {
+  color: #3b82fc;
+  font-size: 1.25rem;
+}
+.station_list .content .status .distance uni-text[data-v-a752d9d6] {
+  font-size: 0.875rem;
 }
 /* 水平间距 */
 /* 水平间距 */
@@ -705,7 +754,7 @@
   padding: 0.625rem;
 }
 .home .charge_station {
-  margin: 0 1.25rem;
+  margin: 0 0.9375rem;
 }
 .home .charge_station .top_area {
   display: flex;

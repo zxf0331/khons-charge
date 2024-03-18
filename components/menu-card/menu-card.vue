@@ -32,9 +32,9 @@
 	.menu-card {
 		@include normalFlex($justify: space-around);
 		margin: 30rpx;
-		border-radius: 26rpx;
-		border:  1px solid #DCDCDC;
-		box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+		border-radius: $gRadius;
+		border:  $gBorder;
+		box-shadow: $gShadow;
 		padding: 20rpx 0;
 		.menu-item {
 			@include normalFlex(column, $justify: space-around);

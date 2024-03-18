@@ -4,9 +4,9 @@
 /* 水平间距 */
 @font-face {
   font-family: "iconfont"; /* Project id 4462692 */
-  src: url('static/iconfont/iconfont.woff2?t=1710750951857') format('woff2'),
-       url('static/iconfont/iconfont.woff?t=1710750951857') format('woff'),
-       url('static/iconfont/iconfont.ttf?t=1710750951857') format('truetype');
+  src: url('static/iconfont/iconfont.woff2?t=1710779969356') format('woff2'),
+       url('static/iconfont/iconfont.woff?t=1710779969356') format('woff'),
+       url('static/iconfont/iconfont.ttf?t=1710779969356') format('truetype');
 }
 .iconfont {
   font-family: "iconfont" !important;
@@ -14,6 +14,9 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.icon-navigation:before {
+  content: "\e6bb";
 }
 .icon-location:before {
   content: "\e61e";

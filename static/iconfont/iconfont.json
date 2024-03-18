@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "15685016",
+      "name": "navigation",
+      "font_class": "navigation",
+      "unicode": "e6bb",
+      "unicode_decimal": 59067
+    },
+    {
       "icon_id": "33987010",
       "name": "定位",
       "font_class": "location",

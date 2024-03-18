@@ -39,7 +39,7 @@
   padding: 20rpx;
 }
 .home .charge_station {
-  margin: 0 40rpx;
+  margin: 0 30rpx;
 }
 .home .charge_station .top_area {
   display: flex;
