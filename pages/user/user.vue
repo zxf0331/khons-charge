@@ -1,7 +1,7 @@
 <template>
 	<view class="user">
 		<user-info @setClick='handleSetClick' @walletItemClick='handleWalletItemClick'></user-info>
-		<menu-card @menuItemClick='handleMenuItemClick'></menu-card>
+		<menu-card :menu='menu' @menuItemClick='handleMenuItemClick'></menu-card>
 		<my-car @addCarClick='handleAddCarClick'></my-car>
 		<more-service @moreServItemClick='handleServiceClick'></more-service>
 		<cc-myTabbar :tabBarShow="2"></cc-myTabbar>
@@ -19,7 +19,6 @@
 <script setup>
 	import { onMounted } from 'vue'
 	import UserInfo from './cpns/UserInfo.vue'
-	import MenuCard from './cpns/MenuCard.vue'
 	import MyCar from './cpns/MyCar.vue'
 	import MoreService from './cpns/MoreService.vue'
 	
@@ -54,9 +53,30 @@
 	function handleServiceClick(index) {
 		console.log("更多服务被点击了：", index);
 	}
+	
+	// 模拟数据
+	const menu = [
+		{
+			img: '/static/images/menu/order.png',
+			title: '我的订单'
+		},
+		{
+			img: '/static/images/menu/statistics.png',
+			title: '充电数据'
+		},
+		{
+			img: '/static/images/menu/charging.png',
+			title: '即插即充'
+		},
+		{
+			img: '/static/images/menu/favor.png',
+			title: '站点收藏'
+		}
+	]
 </script>
 
 <style lang="scss">
+
  	.user {
  		padding-bottom: 240rpx; 
 		

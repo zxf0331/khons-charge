@@ -1,1 +1,1 @@
-<view class=""><view>scan</view><cc-my-tabbar wx:if="{{a}}" u-i="30a8fd1b-0" bind:__l="__l" u-p="{{a}}"></cc-my-tabbar></view>
+<view class=""><view>scan</view><cc-my-tabbar wx:if="{{a}}" u-i="6c5f854c-0" bind:__l="__l" u-p="{{a}}"></cc-my-tabbar></view>

@@ -1,0 +1,35 @@
+<template>
+	<view class="station_list">
+		<view class="img">
+			<image src="../../static/uni.png" mode=""></image>
+		</view>
+		<view class="content">
+			<view class="name">东湖公园2号站点</view>
+			<view class="address">锦江区大慈寺路48-1号</view>
+			<view class="status">
+				<text>忙/闲：5/5</text>
+				<text>慢充</text>
+			</view>
+			<view class="status">
+				<text>电费：0.6元/度</text>
+				<text>服务费：0.1元</text>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script setup>
+
+</script>
+
+<style lang="scss">
+.station_list {
+	@include normalFlex();
+	.img {
+		image{
+			width: 160rpx;
+			height: 160rpx;
+		}
+	}
+}
+</style>

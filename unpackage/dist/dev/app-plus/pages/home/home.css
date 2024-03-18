@@ -564,6 +564,50 @@
 }
 /* 水平间距 */
 /* 水平间距 */
+[data-v-0fc97039] .uni-card__header-content-title {
+  font-weight: 600;
+}
+.menu-card[data-v-0fc97039] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0.9375rem;
+  border-radius: 0.8125rem;
+  border: 1px solid #DCDCDC;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+  padding: 0.625rem 0;
+}
+.menu-card .menu-item[data-v-0fc97039] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.menu-card .menu-item .image[data-v-0fc97039] {
+  width: 2.1875rem;
+  height: 2.1875rem;
+}
+.menu-card .menu-item .title[data-v-0fc97039] {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #666666;
+}
+/* 水平间距 */
+/* 水平间距 */
+[data-v-a752d9d6] .uni-card__header-content-title {
+  font-weight: 600;
+}
+.station_list[data-v-a752d9d6] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.station_list .img uni-image[data-v-a752d9d6] {
+  width: 5rem;
+  height: 5rem;
+}
+/* 水平间距 */
+/* 水平间距 */
 [data-v-61f40987] .uni-card__header-content-title {
   font-weight: 600;
 }
@@ -625,6 +669,12 @@
  .uni-card__header-content-title {
   font-weight: 600;
 }
+ .menu-card {
+  justify-content: start;
+}
+ .menu-card .menu-item {
+  margin-left: 1.25rem;
+}
 .home .top {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 }
@@ -638,16 +688,27 @@
 .home .top .search .city {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex: 1;
+}
+.home .top .search .city .current_city {
+  font-size: 0.875rem;
 }
 .home .top .search .city .icon-triangle {
   padding-top: 0.125rem;
   font-size: 1rem;
 }
 .home .top .search .search_bar {
-  flex: 5.5;
+  flex: 4.7;
 }
 .home .top .banner {
   padding: 0.625rem;
+}
+.home .charge_station {
+  margin: 0 1.25rem;
+}
+.home .charge_station .top_area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

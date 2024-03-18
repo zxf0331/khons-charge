@@ -18,6 +18,11 @@
 .ynq-AutoLocation text.data-v-b6ff804d {
   font-size: 30rpx;
 }
+.ynq-AutoLocation .icon-location.data-v-b6ff804d {
+  font-size: 34rpx;
+  padding-top: 4rpx;
+  margin-right: 4rpx;
+}
 .ynq-HotCity.data-v-b6ff804d {
   padding: 20rpx;
 }
@@ -67,11 +72,13 @@
 }
 .ynq-CityList .ynq-CityLetter.data-v-b6ff804d {
   line-height: 30rpx;
-  height: 40rpx;
-  font-size: 24rpx;
+  height: 60rpx;
+  font-size: 32rpx;
+  line-height: 60rpx;
   border-bottom: 1px solid #f7f7f7;
   padding-left: 10rpx;
-  color: #909090;
+  color: #3b82fc;
+  background-color: #ececec;
 }
 .ynq-CityList .ynq-CityLine.data-v-b6ff804d {
   margin: 20rpx 0px;
@@ -82,9 +89,6 @@
   padding: 0px 10rpx;
   font-size: 30rpx;
   color: #767676;
-}
-.ynq-CityList .ynq-CityLine text.data-v-b6ff804d:nth-child(even) {
-  background-color: rgba(200, 200, 200, 0.12);
 }
 .ynq-ScrollView.data-v-b6ff804d {
   height: calc(100vh - 160rpx);

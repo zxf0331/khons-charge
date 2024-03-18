@@ -1,0 +1,14 @@
+/* 水平间距 */
+/* 水平间距 */
+ .uni-card__header-content-title {
+  font-weight: 600;
+}
+.station_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.station_list .img image {
+  width: 160rpx;
+  height: 160rpx;
+}

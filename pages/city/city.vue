@@ -11,6 +11,7 @@
                 <text>{{CityName}}</text>
             </view>
             <view class="ynq-ReLocation u_flex" @click="requestLocationPermission">
+				<i class="iconfont icon-location"></i>
                 <text class="ml5">重新定位</text>
             </view>
         </view>
@@ -36,163 +37,155 @@
     </view>
 </template>
 
-<script>
-import cityData from './city.json'
-import {jsonp} from 'vue-jsonp';
-export default {
-    data() {
-        return {
-            CityName: '北京',
-            HotCity: ['北京', '深圳', '上海', '成都', '广州', '广东'],
-            LatterName: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
-            CityList: cityData.city,
-            LetterId: '',
-			key: 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON'
-        }
-    },
-    onLoad() {
-        this.getCityName();
-    },
-    methods: {
-        getLetter(name) {
-            this.LetterId = name;
+<script setup>
+import { ref, computed } from 'vue';
+import cityData from './city.json';
+import { jsonp } from 'vue-jsonp';
+import { useMainStore } from '@/store/main.js'
+
+const mainStore = useMainStore()
+let CityName = computed(() => mainStore.currentCity)
+const HotCity = ref(['北京', '深圳', '上海', '成都', '广州', '广东']);
+const LatterName = ref(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']);
+const CityList = ref(cityData.city);
+const LetterId = ref('');
+const key = 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON';
+
+// onMounted(() => {
+//     getCityName();
+// });
+
+function getLetter(name) {
+    LetterId.value = name;
+}
+
+function getStorage(Name) {
+    // uni.setStorage({
+    //     key: 'City_Name',
+    //     data: Name	
+    // });
+    // CityName.value = Name;
+	mainStore.setCity(Name)
+    uni.navigateBack({
+        url: '/pages/home/home'
+    });
+}
+
+// function getCityName() {
+//     setTimeout(() => {
+//         uni.getStorage({
+//             key: 'City_Name',
+//             success(res) {
+//                 // CityName.value = res.data;
+// 				mainStore.setCity(res.data)
+//             }
+//         });
+//     }, 500);
+// }
+
+function requestLocationPermission() {
+    // #ifdef MP-WEIXIN
+    uni.authorize({
+        scope: 'scope.userLocation',
+        success: () => {
+            getLocation();
         },
-        getStorage(Name) {
-            uni.setStorage({
-                key: 'City_Name',
-                data: Name	
-            });
-            this.CityName = Name;
-            uni.navigateBack({
-                url: '/pages/home/home'
-            });
-        },
-        getCityName() {
-            let _that = this;
-            setTimeout(function() {
-                uni.getStorage({
-                    key: 'City_Name',
-                    success(res) {
-                        _that.CityName = res.data;
-                    }
-                });
-            }, 500);
-        },
-        requestLocationPermission() {
-        // #ifdef MP-WEIXIN
-            uni.authorize({
-                scope: 'scope.userLocation',
-                success: () => {
-					console.log("有权限");
-                    this.getLocation();
-                },
-                fail: this.handleLocationPermissionDenied,
-            });
+        fail: handleLocationPermissionDenied,
+    });
+    // #endif
+    
+    // #ifdef H5
+    getLocation();
+    // #endif
+    
+    // #ifdef APP-PLUS
+    plus.geolocation.getCurrentPosition(getLocation, handleLocationPermissionDenied, {geocode: true});
+    // #endif
+}
+
+function getLocation() {
+    uni.getLocation({
+        type: 'gcj02',
+        success: (res) => {
+            let lat = res.latitude;
+            let lng = res.longitude;
+            // #ifndef H5
+            getCityByLatLon(lat, lng)
             // #endif
             
             // #ifdef H5
-            this.getLocation();
-            // #endif
-            
-            // #ifdef APP-PLUS
-            plus.geolocation.getCurrentPosition(this.getLocation, this.handleLocationPermissionDenied, {geocode: true});
+            H5getCityByLatLon(lat, lng)
             // #endif
         },
-		H5getCityByLatLon(lat, lng) {
-			let that = this
-			const params = {
-			      headers: {"content-type": "application/xml"},
-			      callbackQuery: "callbackParam",
-			      callbackName: "jsonpCallback"
-			    }
-				 let url = `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${this.key}&output=jsonp&callback="jsonpCallback`; 
-				 jsonp(url, params).then(res => {
-				   let data = res.data
-				   let CityName = res.result.ad_info.city
-				   that.CityName = CityName
-				   uni.setStorage({
-				   	key: 'City_Name',
-				   	data: CityName
-				   })
-				 }).catch(err => {
-				   console.log('err', err);
-				 })
-		},
-        getLocation() {
-            uni.getLocation({
-                type: 'gcj02',
-                success: (res) => {
-					console.log("success");
-                    let lat = res.latitude;
-                    let lng = res.longitude;
-					// let key = 'XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON';
-                    // 这里假设有一个函数根据经纬度获取城市名称，实际需要自行实现
-					// #ifndef H5
-					this.getCityByLatLon(lat, lng);
-					// #endif
-					
-					// #ifdef H5
-					this.H5getCityByLatLon(lat, lng);
-					// #endif
-                },
-                fail: (errMsg) => {
-					console.log(errMsg);
-                    uni.showToast({
-                        title: '无法获取位置信息',
-                        icon: 'none'
-                    });
-                }
-            });	
+        fail: (errMsg) => {
+            console.log(errMsg);
+            uni.showToast({
+                title: '无法获取位置信息',
+                icon: 'none'
+            })
+        }
+    })
+}
+
+function handleLocationPermissionDenied() {
+    uni.showModal({
+        title: '位置权限被拒绝',
+        content: '请在系统设置或应用权限管理中允许使用位置信息',
+        confirmText: "确认",
+        cancelText: "取消",
+        success: function(res) {
+            if (res.confirm) {
+                uni.openSetting({
+                    success() {
+                        uni.getLocation()
+                    }
+                })
+            }
+        }
+    });
+}
+
+function H5getCityByLatLon(lat, lng) {
+    const params = {
+        headers: {"content-type": "application/xml"},
+        callbackQuery: "callbackParam",
+        callbackName: "jsonpCallback"
+    };
+    let url = `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${key}&output=jsonp&callback="jsonpCallback"`; 
+    jsonp(url, params).then(res => {
+        let data = res.data;
+        let CityNameResult = res.result.ad_info.city
+		mainStore.setCity(CityNameResult)
+		CityName = CityNameResult
+        // uni.setStorage({
+        //     key: 'City_Name',
+        //     data: CityNameResult
+        // });
+    }).catch(err => {
+        console.log('err', err)
+    });
+}
+
+function getCityByLatLon(lat, lng) {
+    uni.request({
+        url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${key}`,
+        method: "GET",
+        success(ress) {
+            let CityNameResult = ress.data.result.address_component.city
+            mainStore.setCity(CityNameResult)
+			CityName = CityNameResult
+            // uni.setStorage({
+            //     key: 'City_Name',
+            //     data: CityNameResult
+            // })
         },
-        handleLocationPermissionDenied() {
-            uni.showModal({
-                title: '位置权限被拒绑',
-                content: '请在系统设置或应用权限管理中允许使用位置信息',
-				confirmText: "确认",
-				cancelText: "取消",
-				success: function(res) {
-					if (res.confirm) {
-						uni.openSetting({
-							success() {
-								uni.getLocation();
-							}
-						})
-					}
-				}
-            });
-        },
-        // 示例方法，根据经纬度获取城市名称
-        getCityByLatLon(lat, lng) {
-            // 这里应实现通过经纬度获取城市名称的逻辑，可能需要调用外部API
-            // 假设获取到的城市名称赋值给CityName
-            // this.CityName = '某城市名称';
-			console.log("成功调用",lat,lng);
-			console.log(this.key);
-			let that = this
-			uni.request({
-				url: 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + lat + ',' + lng + '&key=' +this.key,
-				method: "GET",
-				success(ress) {
-					console.log(ress);
-					let data = ress.data; //获取到所有定位的数据
-					let CityName = ress.data.result.address_component.city
-					that.CityName = CityName
-					// let Street = ress.data.result.address_component.street
-					// that.CityName = Street
-					uni.setStorage({
-						key: 'City_Name',
-						data: CityName
-					})
-				},
-				fail() {
-					uni.showToast({
-						'title': '对不起，数据获取失败！',
-						'icon': 'none'
-					})
-				}
-			})
-        },
-    },
+        fail() {
+            uni.showToast({
+                'title': '对不起，数据获取失败！',
+                'icon': 'none'
+            })
+        }
+    })
 }
 </script>
 
@@ -214,6 +207,12 @@ export default {
  
 		text {
 			font-size: 30rpx;
+		}
+		
+		.icon-location {
+			font-size: 34rpx;
+			padding-top: 4rpx;
+			margin-right: 4rpx;
 		}
 	}
  
@@ -274,11 +273,14 @@ export default {
  
 		.ynq-CityLetter {
 			line-height: 30rpx;
-			height: 40rpx;
-			font-size: 24rpx;
+			height: 60rpx;
+			font-size: 32rpx;
+			line-height: 60rpx;
 			border-bottom: 1px solid #f7f7f7;
 			padding-left: 10rpx;
-			color: #909090;
+			color: #3b82fc;
+			background-color: #ececec;
+
 		}
 		.ynq-CityLine {
 			margin: 20rpx 0px;
@@ -288,9 +290,7 @@ export default {
 				padding: 0px 10rpx;
 				font-size: 30rpx;
 				color: #767676;
-				&:nth-child(even) {
-					background-color: rgba(200, 200, 200, .12);
-				}
+
 			}
 		}
 	}

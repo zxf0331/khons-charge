@@ -12,31 +12,20 @@
 <script setup>
 	import { defineEmits } from 'vue'
 	
+	defineProps({
+		menu: {
+			type: Array,
+			default: () => []
+		}
+	})
+	
 	const emits = defineEmits(['menuItemClick'])
 	
 	function menuItemClick(index) {
 		emits('menuItemClick', index)
 	}
 	
-	// 模拟数据
-	const menu = [
-		{
-			img: '/static/images/menu/order.png',
-			title: '我的订单'
-		},
-		{
-			img: '/static/images/menu/statistics.png',
-			title: '充电数据'
-		},
-		{
-			img: '/static/images/menu/charging.png',
-			title: '即插即充'
-		},
-		{
-			img: '/static/images/menu/favor.png',
-			title: '站点收藏'
-		}
-	]
+	
 </script>
 
 <style lang="scss">

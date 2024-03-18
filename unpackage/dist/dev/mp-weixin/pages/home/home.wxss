@@ -3,6 +3,12 @@
  .uni-card__header-content-title {
   font-weight: 600;
 }
+ .menu-card {
+  justify-content: start;
+}
+ .menu-card .menu-item {
+  margin-left: 40rpx;
+}
 .home .top {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 }
@@ -16,16 +22,27 @@
 .home .top .search .city {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   flex: 1;
+}
+.home .top .search .city .current_city {
+  font-size: 28rpx;
 }
 .home .top .search .city .icon-triangle {
   padding-top: 4rpx;
   font-size: 32rpx;
 }
 .home .top .search .search_bar {
-  flex: 5.5;
+  flex: 4.7;
 }
 .home .top .banner {
   padding: 20rpx;
+}
+.home .charge_station {
+  margin: 0 40rpx;
+}
+.home .charge_station .top_area {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

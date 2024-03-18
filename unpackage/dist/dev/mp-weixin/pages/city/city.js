@@ -1,5 +1,6 @@
 "use strict";
 const common_vendor = require("../../common/vendor.js");
+const store_main = require("../../store/main.js");
 const city = [
   {
     initial: "A",
@@ -5834,82 +5835,40 @@ const cityData = {
   city
 };
 const _sfc_main = {
-  data() {
-    return {
-      CityName: "北京",
-      HotCity: ["北京", "深圳", "上海", "成都", "广州", "广东"],
-      LatterName: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-      CityList: cityData.city,
-      LetterId: "",
-      key: "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON"
-    };
-  },
-  onLoad() {
-    this.getCityName();
-  },
-  methods: {
-    getLetter(name) {
-      this.LetterId = name;
-    },
-    getStorage(Name) {
-      common_vendor.index.setStorage({
-        key: "City_Name",
-        data: Name
-      });
-      this.CityName = Name;
+  __name: "city",
+  setup(__props) {
+    const mainStore = store_main.useMainStore();
+    let CityName = common_vendor.computed(() => mainStore.currentCity);
+    const HotCity = common_vendor.ref(["北京", "深圳", "上海", "成都", "广州", "广东"]);
+    const LatterName = common_vendor.ref(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]);
+    const CityList = common_vendor.ref(cityData.city);
+    const LetterId = common_vendor.ref("");
+    const key = "XW7BZ-HNCC5-QLRIH-IBKOZ-MHQ2F-CXFON";
+    function getLetter(name) {
+      LetterId.value = name;
+    }
+    function getStorage(Name) {
+      mainStore.setCity(Name);
       common_vendor.index.navigateBack({
         url: "/pages/home/home"
       });
-    },
-    getCityName() {
-      let _that = this;
-      setTimeout(function() {
-        common_vendor.index.getStorage({
-          key: "City_Name",
-          success(res) {
-            _that.CityName = res.data;
-          }
-        });
-      }, 500);
-    },
-    requestLocationPermission() {
+    }
+    function requestLocationPermission() {
       common_vendor.index.authorize({
         scope: "scope.userLocation",
         success: () => {
-          console.log("有权限");
-          this.getLocation();
+          getLocation();
         },
-        fail: this.handleLocationPermissionDenied
+        fail: handleLocationPermissionDenied
       });
-    },
-    H5getCityByLatLon(lat, lng) {
-      let that = this;
-      const params = {
-        headers: { "content-type": "application/xml" },
-        callbackQuery: "callbackParam",
-        callbackName: "jsonpCallback"
-      };
-      let url = `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${this.key}&output=jsonp&callback="jsonpCallback`;
-      common_vendor.o$1(url, params).then((res) => {
-        res.data;
-        let CityName = res.result.ad_info.city;
-        that.CityName = CityName;
-        common_vendor.index.setStorage({
-          key: "City_Name",
-          data: CityName
-        });
-      }).catch((err) => {
-        console.log("err", err);
-      });
-    },
-    getLocation() {
+    }
+    function getLocation() {
       common_vendor.index.getLocation({
         type: "gcj02",
         success: (res) => {
-          console.log("success");
           let lat = res.latitude;
           let lng = res.longitude;
-          this.getCityByLatLon(lat, lng);
+          getCityByLatLon(lat, lng);
         },
         fail: (errMsg) => {
           console.log(errMsg);
@@ -5919,10 +5878,10 @@ const _sfc_main = {
           });
         }
       });
-    },
-    handleLocationPermissionDenied() {
+    }
+    function handleLocationPermissionDenied() {
       common_vendor.index.showModal({
-        title: "位置权限被拒绑",
+        title: "位置权限被拒绝",
         content: "请在系统设置或应用权限管理中允许使用位置信息",
         confirmText: "确认",
         cancelText: "取消",
@@ -5936,24 +5895,15 @@ const _sfc_main = {
           }
         }
       });
-    },
-    // 示例方法，根据经纬度获取城市名称
-    getCityByLatLon(lat, lng) {
-      console.log("成功调用", lat, lng);
-      console.log(this.key);
-      let that = this;
+    }
+    function getCityByLatLon(lat, lng) {
       common_vendor.index.request({
-        url: "https://apis.map.qq.com/ws/geocoder/v1/?location=" + lat + "," + lng + "&key=" + this.key,
+        url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${key}`,
         method: "GET",
         success(ress) {
-          console.log(ress);
-          ress.data;
-          let CityName = ress.data.result.address_component.city;
-          that.CityName = CityName;
-          common_vendor.index.setStorage({
-            key: "City_Name",
-            data: CityName
-          });
+          let CityNameResult = ress.data.result.address_component.city;
+          mainStore.setCity(CityNameResult);
+          CityName = CityNameResult;
         },
         fail() {
           common_vendor.index.showToast({
@@ -5963,44 +5913,44 @@ const _sfc_main = {
         }
       });
     }
-  }
-};
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-  return {
-    a: common_vendor.o(($event) => $options.getLetter("ScrollTop")),
-    b: common_vendor.f($data.LatterName, (l, i, i0) => {
+    return (_ctx, _cache) => {
       return {
-        a: common_vendor.t(l),
-        b: i,
-        c: common_vendor.o(($event) => $options.getLetter(l), i),
-        d: $data.LetterId === l ? "#4662D9" : "#000"
-      };
-    }),
-    c: common_vendor.t($data.CityName),
-    d: common_vendor.o((...args) => $options.requestLocationPermission && $options.requestLocationPermission(...args)),
-    e: common_vendor.f($data.HotCity, (item, index, i0) => {
-      return {
-        a: common_vendor.t(item),
-        b: common_vendor.o(($event) => $options.getStorage(item), index),
-        c: index
-      };
-    }),
-    f: common_vendor.f($data.CityList, (item, index, i0) => {
-      return {
-        a: common_vendor.t(item.initial),
-        b: item.initial,
-        c: common_vendor.f(item.list, (item_city, name_index, i1) => {
+        a: common_vendor.o(($event) => getLetter("ScrollTop")),
+        b: common_vendor.f(LatterName.value, (l, i, i0) => {
           return {
-            a: common_vendor.t(item_city.name),
-            b: common_vendor.o(($event) => $options.getStorage(item_city.name), name_index),
-            c: name_index
+            a: common_vendor.t(l),
+            b: i,
+            c: common_vendor.o(($event) => getLetter(l), i),
+            d: LetterId.value === l ? "#4662D9" : "#000"
           };
         }),
-        d: index
+        c: common_vendor.t(common_vendor.unref(CityName)),
+        d: common_vendor.o(requestLocationPermission),
+        e: common_vendor.f(HotCity.value, (item, index, i0) => {
+          return {
+            a: common_vendor.t(item),
+            b: common_vendor.o(($event) => getStorage(item), index),
+            c: index
+          };
+        }),
+        f: common_vendor.f(CityList.value, (item, index, i0) => {
+          return {
+            a: common_vendor.t(item.initial),
+            b: item.initial,
+            c: common_vendor.f(item.list, (item_city, name_index, i1) => {
+              return {
+                a: common_vendor.t(item_city.name),
+                b: common_vendor.o(($event) => getStorage(item_city.name), name_index),
+                c: name_index
+              };
+            }),
+            d: index
+          };
+        }),
+        g: LetterId.value
       };
-    }),
-    g: $data.LetterId
-  };
-}
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-b6ff804d"], ["__file", "E:/khons-charge/pages/city/city.vue"]]);
+    };
+  }
+};
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__scopeId", "data-v-b6ff804d"], ["__file", "D:/khons-charge/pages/city/city.vue"]]);
 wx.createPage(MiniProgramPage);
