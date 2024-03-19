@@ -4,16 +4,18 @@ const store_main = require("../../store/main.js");
 if (!Array) {
   const _easycom_uni_search_bar2 = common_vendor.resolveComponent("uni-search-bar");
   const _easycom_menu_card2 = common_vendor.resolveComponent("menu-card");
+  const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_charge_list2 = common_vendor.resolveComponent("charge-list");
   const _easycom_cc_myTabbar2 = common_vendor.resolveComponent("cc-myTabbar");
-  (_easycom_uni_search_bar2 + _easycom_menu_card2 + _easycom_charge_list2 + _easycom_cc_myTabbar2)();
+  (_easycom_uni_search_bar2 + _easycom_menu_card2 + _easycom_uni_section2 + _easycom_charge_list2 + _easycom_cc_myTabbar2)();
 }
 const _easycom_uni_search_bar = () => "../../uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.js";
 const _easycom_menu_card = () => "../../components/menu-card/menu-card.js";
+const _easycom_uni_section = () => "../../uni_modules/uni-section/components/uni-section/uni-section.js";
 const _easycom_charge_list = () => "../../components/charge-list/charge-list.js";
 const _easycom_cc_myTabbar = () => "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar.js";
 if (!Math) {
-  (_easycom_uni_search_bar + HomeBanner + _easycom_menu_card + _easycom_charge_list + _easycom_cc_myTabbar)();
+  (_easycom_uni_search_bar + HomeBanner + _easycom_menu_card + _easycom_uni_section + _easycom_charge_list + _easycom_cc_myTabbar)();
 }
 const HomeBanner = () => "./cpns/HomeBanner.js";
 const __default__ = {
@@ -121,21 +123,25 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         f: common_vendor.p({
           menu
         }),
-        g: common_vendor.f(stationList, (itemInfo, k0, i0) => {
+        g: common_vendor.p({
+          title: "附近充电站",
+          type: "line"
+        }),
+        h: common_vendor.f(stationList, (itemInfo, k0, i0) => {
           return {
-            a: "62bf4a9a-3-" + i0,
+            a: "6ccfeb4a-4-" + i0,
             b: common_vendor.p({
               stationInfo: itemInfo
             }),
             c: itemInfo.name
           };
         }),
-        h: common_vendor.p({
+        i: common_vendor.p({
           tabBarShow: 0
         })
       };
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/khons-charge/pages/home/home.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "E:/khons-charge/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

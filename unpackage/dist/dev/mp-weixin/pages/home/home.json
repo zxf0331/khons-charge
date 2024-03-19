@@ -3,6 +3,7 @@
   "usingComponents": {
     "uni-search-bar": "../../uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
     "menu-card": "../../components/menu-card/menu-card",
+    "uni-section": "../../uni_modules/uni-section/components/uni-section/uni-section",
     "charge-list": "../../components/charge-list/charge-list",
     "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar",
     "home-banner": "./cpns/HomeBanner"

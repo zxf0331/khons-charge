@@ -4,8 +4,8 @@
 			<view class="list" v-for="(item,index) in TabBarList" 
 			@click="onTabBar(item,index)" :style="{marginTop: (index == 1) ?  '-18px' : '0px'}"
 			:key="index">
-				<image :src="item.acImg" mode="widthFix" v-show="tabBarShow === index" :style="{width: (index == 1) ?  '60px' : '24px',borderRadius: (index == 1) ?  '50%' : '0px', boxShadow: (index == 1) ? '0 0 12px rgba(25, 255, 255, 0.7)' : 'none'}"></image>
-				<image :src="item.img" mode="widthFix" v-show="tabBarShow != index" :style="{width: (index == 1) ?  '60px' : '24px',borderRadius: (index == 1) ?  '50%' : '0px', boxShadow: (index == 1) ? '0 0 12px rgba(25, 255, 255, 0.7)' : 'none'}"></image>
+				<image class="img" :src="item.acImg" mode="widthFix" v-show="tabBarShow === index" :style="{width: (index == 1) ?  '60px' : '24px',borderRadius: (index == 1) ?  '50%' : '0px', boxShadow: (index == 1) ? '0 0 12px rgba(25, 255, 255, 0.7)' : 'none'}"></image>
+				<image class="img" :src="item.img" mode="widthFix" v-show="tabBarShow != index" :style="{width: (index == 1) ?  '60px' : '24px',borderRadius: (index == 1) ?  '50%' : '0px', boxShadow: (index == 1) ? '0 0 12px rgba(25, 255, 255, 0.7)' : 'none'}"></image>
 				
 				<!-- background: (index == 1) ?  'red' : '' -->
 				<text  :class="{'action':tabBarShow===index}" :style="{marginTop: (index == 1) ?  '4px' : '0px'}">{{item.name}}</text>

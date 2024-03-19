@@ -22,8 +22,11 @@
 		<!-- 列表区域 -->
 		<view class="charge_station">
 			<view class="top_area">
-				<view class="title">附近充电站</view>
-				<view class="mode">地图模式</view>
+				<uni-section title="附近充电站" type="line"></uni-section>
+				<view class="mode">
+					<i class="iconfont icon-map"></i>
+					<text class="mode">地图模式</text>
+				</view>
 			</view>
 			<template v-for="itemInfo in stationList" :key="itemInfo.name">
 				<charge-list :stationInfo="itemInfo"></charge-list>
@@ -146,6 +149,15 @@
 
 	// }
 	
+	//修改uni-section组件默认padding
+	::v-deep .uni-section-header {
+		padding: 0 20rpx !important;
+	}
+	
+	::v-deep .uni-section {
+		background-color: #f5f5f5;
+	}
+	
 	.home {
 		padding-bottom: 210rpx; 
 		.top {
@@ -179,7 +191,15 @@
 		.charge_station {
 			margin: 0 30rpx;
 			.top_area {
-				@include normalFlex()
+				@include normalFlex();
+				font-size: $gFontSize;
+				.mode {
+					@include normalFlex();
+					align-items: center;
+					.icon-map {
+						margin-right: 4rpx;
+					}
+				}
 			}
 		}
 
