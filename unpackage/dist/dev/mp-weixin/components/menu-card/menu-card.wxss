@@ -11,6 +11,7 @@
   border-radius: 26rpx;
   border: 1px solid #DCDCDC;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+  background-color: #ffffff;
   padding: 20rpx 0;
 }
 .menu-card .menu-item {

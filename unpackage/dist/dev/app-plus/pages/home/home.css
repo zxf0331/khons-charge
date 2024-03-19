@@ -575,6 +575,7 @@
   border-radius: 0.8125rem;
   border: 1px solid #DCDCDC;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+  background-color: #ffffff;
   padding: 0.625rem 0;
 }
 .menu-card .menu-item[data-v-0fc97039] {
@@ -594,66 +595,132 @@
 }
 /* 水平间距 */
 /* 水平间距 */
-[data-v-a752d9d6] .uni-card__header-content-title {
+[data-v-435a5d4d] .uni-card__header-content-title {
   font-weight: 600;
 }
-.station_list[data-v-a752d9d6] {
+uni-view[data-v-435a5d4d], uni-scroll-view[data-v-435a5d4d], uni-swiper-item[data-v-435a5d4d] {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.uv-line-progress[data-v-435a5d4d] {
+  align-items: stretch;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 100px;
+}
+.uv-line-progress__background[data-v-435a5d4d] {
+  background-color: #ececec;
+  border-radius: 100px;
+  flex: 1;
+}
+.uv-line-progress__line[data-v-435a5d4d] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  border-radius: 100px;
+  transition: width 0.5s ease;
+  justify-content: flex-end;
+}
+.uv-line-progress__text[data-v-435a5d4d] {
+  font-size: 10px;
+  align-items: center;
+  text-align: right;
+  color: #FFFFFF;
+  margin-right: 5px;
+  transform: scale(0.9);
+}
+/* 水平间距 */
+/* 水平间距 */
+[data-v-c11a1603] .uni-card__header-content-title {
+  font-weight: 600;
+}
+.station_list[data-v-c11a1603] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border: 1px solid #DCDCDC;
   border-radius: 0.8125rem;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+  background-color: #ffffff;
   height: 6.25rem;
   padding: 0.625rem;
+  margin-top: 0.625rem;
 }
-.station_list .img[data-v-a752d9d6] {
+.station_list .img[data-v-c11a1603] {
   flex: 1;
 }
-.station_list .img uni-image[data-v-a752d9d6] {
+.station_list .img uni-image[data-v-c11a1603] {
   width: 6.25rem;
   height: 6.25rem;
   border-radius: 0.8125rem;
 }
-.station_list .content[data-v-a752d9d6] {
+.station_list .content[data-v-c11a1603] {
   flex: 2.5;
   margin-left: 0.5rem;
 }
-.station_list .content .name[data-v-a752d9d6] {
+.station_list .content .name[data-v-c11a1603] {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.125rem;
 }
-.station_list .content .address[data-v-a752d9d6] {
+.station_list .content .address[data-v-c11a1603] {
   font-size: 0.75rem;
-  color: #666666;
-  margin-bottom: 0.1875rem;
-}
-.station_list .content .price[data-v-a752d9d6] {
-  font-size: 0.75rem;
-  color: red;
+  color: #999999;
   margin-bottom: 0.25rem;
 }
-.station_list .content .status[data-v-a752d9d6] {
+.station_list .content .price[data-v-c11a1603] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.station_list .content .price uni-text[data-v-c11a1603] {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: red;
+}
+.station_list .content .price .elec_charge[data-v-c11a1603] {
+  margin-right: 0.625rem;
+}
+.station_list .content .status[data-v-c11a1603] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: 0.75rem;
 }
-.station_list .content .status .distance[data-v-a752d9d6] {
+.station_list .content .status .station_info .progress[data-v-c11a1603] {
+  margin-top: 0.25rem;
+}
+.station_list .content .status .distance[data-v-c11a1603] {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  border-radius: 0.5625rem;
-  background-color: #e7eef6;
-  padding: 0.0625rem;
+  align-items: center;
+  border-radius: 0.5rem;
+  background-color: #ecf4fe;
+  color: #3c9cff;
+  padding: 0 0.25rem;
 }
-.station_list .content .status .distance .icon-navigation[data-v-a752d9d6] {
-  color: #3b82fc;
+.station_list .content .status .distance .icon-navigation[data-v-c11a1603] {
   font-size: 1.25rem;
 }
-.station_list .content .status .distance uni-text[data-v-a752d9d6] {
+.station_list .content .status .distance uni-text[data-v-c11a1603] {
   font-size: 0.875rem;
+  font-weight: 600;
 }
 /* 水平间距 */
 /* 水平间距 */
@@ -718,11 +785,8 @@
  .uni-card__header-content-title {
   font-weight: 600;
 }
- .menu-card {
-  justify-content: start;
-}
- .menu-card .menu-item {
-  margin-left: 1.25rem;
+.home {
+  padding-bottom: 6.5625rem;
 }
 .home .top {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);

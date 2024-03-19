@@ -3,11 +3,8 @@
  .uni-card__header-content-title {
   font-weight: 600;
 }
- .menu-card {
-  justify-content: start;
-}
- .menu-card .menu-item {
-  margin-left: 40rpx;
+.home {
+  padding-bottom: 210rpx;
 }
 .home .top {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);

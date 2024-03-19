@@ -88,7 +88,7 @@
 			
 					.username {
 						font-size: 36rpx;
-						font-weight: 600
+						font-weight: $gFontWeight;
 					}
 				}
 			}
@@ -111,7 +111,7 @@
 					.item-num {
 						text-align: center;
 						font-size: 40rpx;
-						font-weight: 600;
+						font-weight: $gFontWeight;
 					}
 					.item-name {
 						margin-top: 4rpx;

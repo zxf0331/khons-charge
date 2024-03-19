@@ -25,9 +25,11 @@
 				<view class="title">附近充电站</view>
 				<view class="mode">地图模式</view>
 			</view>
-			<!-- 充电站列表 -->
-			<station-list></station-list>
+			<template v-for="itemInfo in stationList" :key="itemInfo.name">
+				<charge-list :stationInfo="itemInfo"></charge-list>
+			</template>
 		</view>
+		
 		<!-- 自定义tabar -->
 		<cc-myTabbar :tabBarShow="0"></cc-myTabbar>
 	</view>
@@ -91,18 +93,61 @@
 				title: '我要充值'
 			}
 		]
+		
+		// 模拟充电站列表数据
+		const stationList = [
+			{
+				img: '/static/images/station_1.jpg',
+				name: '东方丽景充电站',
+				address: '四川省成都市锦江区海桐街354号',
+				elec_charge: '0.6',
+				serv_charge: '0.1',
+				free: '8',
+				total: '20',
+				type: '慢充'
+			},
+			{
+				img: '/static/images/station_2.jpg',
+				name: '环球中心充电站',
+				address: '四川省成都市武侯区环球东路',
+				elec_charge: '0.65',
+				serv_charge: '0.2',
+				free: '18',
+				total: '20',
+				type: '快充'
+			},
+			{
+				img: '/static/images/station_3.jpg',
+				name: '成都中国核动力润诚达快充站',
+				address: '四川省成都市武侯区白云街55号',
+				elec_charge: '0.8',
+				serv_charge: '0.1',
+				free: '2',
+				total: '15',
+				type: '快充'
+			},
+			{
+				img: '/static/images/station_4.jpg',
+				name: '润诚达武侯万达充电站',
+				address: '四川省成都市武侯区聚龙路372号',
+				elec_charge: '0.6',
+				serv_charge: '0.1',
+				free: '4',
+				total: '12',
+				type: '慢充'
+			}
+		]
 </script>
 
 <style lang="scss">
 	// 重写菜单组件样式
-	::v-deep .menu-card {
-		justify-content: start;
-		.menu-item {
-			margin-left: 40rpx;
-		}
-	}
+	// ::v-deep .menu-card {
+	// 	justify-content: space-around;
+
+	// }
 	
 	.home {
+		padding-bottom: 210rpx; 
 		.top {
 			background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 

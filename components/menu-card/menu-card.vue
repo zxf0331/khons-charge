@@ -35,6 +35,7 @@
 		border-radius: $gRadius;
 		border:  $gBorder;
 		box-shadow: $gShadow;
+		background-color: #ffffff;
 		padding: 20rpx 0;
 		.menu-item {
 			@include normalFlex(column, $justify: space-around);

@@ -1,0 +1,49 @@
+/* 水平间距 */
+/* 水平间距 */
+.data-v-435a5d4d .uni-card__header-content-title {
+  font-weight: 600;
+}
+view.data-v-435a5d4d, scroll-view.data-v-435a5d4d, swiper-item.data-v-435a5d4d {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.uv-line-progress.data-v-435a5d4d {
+  align-items: stretch;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 100px;
+}
+.uv-line-progress__background.data-v-435a5d4d {
+  background-color: #ececec;
+  border-radius: 100px;
+  flex: 1;
+}
+.uv-line-progress__line.data-v-435a5d4d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  color: #ffffff;
+  border-radius: 100px;
+  transition: width 0.5s ease;
+  justify-content: flex-end;
+}
+.uv-line-progress__text.data-v-435a5d4d {
+  font-size: 10px;
+  align-items: center;
+  text-align: right;
+  color: #FFFFFF;
+  margin-right: 5px;
+  transform: scale(0.9);
+}
