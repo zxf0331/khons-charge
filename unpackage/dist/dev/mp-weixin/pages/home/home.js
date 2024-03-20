@@ -129,7 +129,7 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         }),
         h: common_vendor.f(stationList, (itemInfo, k0, i0) => {
           return {
-            a: "6ccfeb4a-4-" + i0,
+            a: "62bf4a9a-4-" + i0,
             b: common_vendor.p({
               stationInfo: itemInfo
             }),
@@ -143,5 +143,5 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
     };
   }
 });
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "E:/khons-charge/pages/home/home.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/khons-charge/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

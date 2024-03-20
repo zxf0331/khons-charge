@@ -78,7 +78,7 @@
 <style lang="scss">
 
  	.user {
- 		padding-bottom: 240rpx; 
+ 		padding-bottom: 180rpx; 
 		
  	}
 </style>

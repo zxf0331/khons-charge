@@ -155,11 +155,11 @@
 	}
 	
 	::v-deep .uni-section {
-		background-color: #f5f5f5;
+		background-color: #f5f5f5 !important;
 	}
 	
 	.home {
-		padding-bottom: 210rpx; 
+		padding-bottom: 180rpx; 
 		.top {
 			background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 

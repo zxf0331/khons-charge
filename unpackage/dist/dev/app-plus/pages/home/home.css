@@ -841,10 +841,10 @@ uni-view[data-v-435a5d4d], uni-scroll-view[data-v-435a5d4d], uni-swiper-item[dat
   padding: 0 0.625rem !important;
 }
  .uni-section {
-  background-color: #f5f5f5;
+  background-color: #f5f5f5 !important;
 }
 .home {
-  padding-bottom: 6.5625rem;
+  padding-bottom: 5.625rem;
 }
 .home .top {
   background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
