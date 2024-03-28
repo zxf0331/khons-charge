@@ -8,7 +8,8 @@ const _sfc_main = {
     const wallet = [
       {
         itemName: "余额(元)",
-        num: 525.36
+        num: 525.36,
+        pagePath: "/pages/wallet/wallet"
       },
       {
         itemName: "等级",
@@ -22,8 +23,18 @@ const _sfc_main = {
     function setClick() {
       emits("setClick");
     }
-    function walletItemClick(index) {
+    function walletItemClick(index, item) {
       emits("walletItemClick", index);
+      if (item.pagePath) {
+        common_vendor.index.navigateTo({
+          url: item.pagePath
+        });
+      } else {
+        common_vendor.index.showToast({
+          title: "功能正在开发中...",
+          icon: "none"
+        });
+      }
     }
     return (_ctx, _cache) => {
       return {
@@ -33,7 +44,7 @@ const _sfc_main = {
           return {
             a: common_vendor.t(item.num),
             b: common_vendor.t(item.itemName),
-            c: common_vendor.o(($event) => walletItemClick(index), item),
+            c: common_vendor.o(($event) => walletItemClick(index, item), item),
             d: item
           };
         })

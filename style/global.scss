@@ -4,13 +4,16 @@ $gTintColor: #ff8198;
 $gPriceColor:#ff5f3e;
 $gNormalColor: #666;
 
+$gMargin: 30rpx;
 $gBgColor:#f2f2f2;
+$gBgImage: linear-gradient(to bottom, #e0ecfc, #fcfdff);
 $gFontSize: 28rpx;
 $gFontColor: #666666;
 $gFontWeight: 600;
 $gRadius: 26rpx;
 $gBorder: 1px solid #DCDCDC;
 $gShadow: rgba(0, 0, 0, 0.08) 0px 0px 3px 1px;
+
 
 // 定义混合
 @mixin normalFlex($direction: row, $justify: space-between) {

@@ -15,7 +15,7 @@
 		<view class="info-bottom">
 			<view class="wallet">
 				<template v-for="(item, index) in wallet" :key="item">
-					<view class="wallet-item" @click="walletItemClick(index)">
+					<view class="wallet-item" @click="walletItemClick(index, item)">
 						<view class="item-num"> {{ item.num }}</view>
 						<view class="item-name">
 							<text class="item-name">{{ item.itemName }}</text>
@@ -36,7 +36,8 @@
 	const wallet = [
 		{
 			itemName: "余额(元)",
-			num: 525.36
+			num: 525.36,
+			pagePath: '/pages/wallet/wallet'
 		},
 		{
 			itemName: "等级",
@@ -56,15 +57,25 @@
 	}
 	
 	// 点击item
-	function walletItemClick(index) {
+	function walletItemClick(index, item) {
 		emits('walletItemClick', index)
+		if(item.pagePath) {
+			uni.navigateTo({
+				url: item.pagePath
+			})
+		} else {
+			uni.showToast({
+				title: '功能正在开发中...',
+				icon: 'none'
+			})
+		}
 	}
 </script>
 
 <style lang='scss'>
 
 	.userinfo {
-		background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
+		background-image: $gBgImage;
 		.info-top{
 			@include normalFlex();
 			padding: 20rpx;

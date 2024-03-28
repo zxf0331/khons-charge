@@ -4,10 +4,10 @@ const common_vendor = require("./common/vendor.js");
 const uni_modules_piniaPluginUnistorage_index = require("./uni_modules/pinia-plugin-unistorage/index.js");
 if (!Math) {
   "./pages/home/home.js";
-  "./pages/scan/scan.js";
   "./pages/user/user.js";
   "./pages/city/city.js";
   "./pages/search/search.js";
+  "./pages/wallet/wallet.js";
 }
 const _sfc_main = {
   onLaunch() {

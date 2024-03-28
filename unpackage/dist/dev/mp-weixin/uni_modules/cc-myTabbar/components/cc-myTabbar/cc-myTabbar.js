@@ -72,8 +72,16 @@ const _sfc_main = {
           });
           break;
         case 1:
-          common_vendor.index.switchTab({
-            url: "/pages/scan/scan"
+          common_vendor.index.scanCode({
+            success: (res) => {
+              console.log("扫描结果：", res);
+            },
+            fail: () => {
+              common_vendor.index.showToast({
+                title: "扫描失败",
+                icon: "none"
+              });
+            }
           });
           break;
         case 2:

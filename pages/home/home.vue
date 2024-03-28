@@ -18,7 +18,7 @@
 			<!-- 轮播图 -->
 			<home-banner :banners="banners"></home-banner>
 		</view>
-		<menu-card :menu='menu'></menu-card>
+		<menu-card :menu='menu' @menuItemClick='handleMenuItemClick'></menu-card>
 		<!-- 列表区域 -->
 		<view class="charge_station">
 			<view class="top_area">
@@ -34,18 +34,18 @@
 		</view>
 		
 		<!-- 自定义tabar -->
-		<cc-myTabbar :tabBarShow="0"></cc-myTabbar>
+<!-- 		<cc-myTabbar :tabBarShow="0"></cc-myTabbar> -->
 	</view>
 
 </template>
 
-<script>
-	export default { 
-		onReady() {
-			uni.hideTabBar()
-		}
-	}
-</script>
+// <script>
+// 	export default { 
+// 		onReady() {
+// 			uni.hideTabBar()
+// 		}
+// 	}
+// </script>
 
 <script setup>
 	import { onMounted } from 'vue'
@@ -72,6 +72,11 @@
 			url: '/pages/search/search'
 		})
 	}
+	
+	function handleMenuItemClick(item) {
+		console.log(item);
+	}
+	
 	// 轮播图模拟数据
 	const banners = [
 		{
@@ -87,9 +92,11 @@
 	
 	// 菜单数据
 		const menu = [
-			{
+			{	
+				action: 'scanCode',
 				img: '/static/images/menu/scan.png',
-				title: '我要充电'
+				title: '我要充电',
+				pagePath: '/pages/scan/scan'
 			},
 			{
 				img: '/static/images/menu/wallet.png',
@@ -161,7 +168,7 @@
 	.home {
 		padding-bottom: 180rpx; 
 		.top {
-			background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
+			background-image: $gBgImage;
 
 			.search {
 				@include normalFlex();

@@ -122,11 +122,6 @@
           "selectedIconPath": "/static/images/tabbar/home_select.png"
         },
         {
-          "text": "扫码充电",
-          "pagePath": "pages/scan/scan",
-          "iconPath": "/static/images/tabbar/scaner.png"
-        },
-        {
           "text": "我的",
           "pagePath": "pages/user/user",
           "iconPath": "/static/images/tabbar/mine.png",

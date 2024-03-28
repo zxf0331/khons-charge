@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/home/home",
-    "pages/scan/scan",
     "pages/user/user",
     "pages/city/city",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/wallet/wallet"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -20,11 +20,6 @@
         "pagePath": "pages/home/home",
         "iconPath": "static/images/tabbar/home.png",
         "selectedIconPath": "static/images/tabbar/home_select.png"
-      },
-      {
-        "text": "扫码充电",
-        "pagePath": "pages/scan/scan",
-        "iconPath": "static/images/tabbar/scaner.png"
       },
       {
         "text": "我的",

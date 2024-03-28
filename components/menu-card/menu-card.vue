@@ -1,7 +1,7 @@
 <template>
 	<view class="menu-card">
-		<template v-for="(item, index) in menu" :key="item">
-			<view class="menu-item" @click="menuItemClick(index)">
+		<template v-for="(item, index) in menu" :key="item.title">
+			<view class="menu-item" @click="menuItemClick(index, item)">
 				<image class="image" :src="item.img" mode="widthFix"></image>
 				<text class="title">{{ item.title }}</text>
 			</view>
@@ -21,8 +21,34 @@
 	
 	const emits = defineEmits(['menuItemClick'])
 	
-	function menuItemClick(index) {
+	function menuItemClick(index, item) {
 		emits('menuItemClick', index)
+		if(item.action && item.action === 'scanCode') {
+			// 执行扫码操作
+			uni.scanCode({
+				success: (res) => {
+					console.log('扫描结果：', res)
+					// TODO 后续处理
+					
+				},
+				fail: () => {
+					uni.showToast({
+						title: '扫描失败',
+						icon: 'none'
+					})
+				}
+			})
+		}
+		else if(item.pagePath) {
+			uni.navigateTo({
+				url: item.pagePath
+			})
+		} else {
+			uni.showToast({
+				title: '功能正在开发中...',
+				icon: 'none'
+			})
+		}
 	}
 	
 	
@@ -31,7 +57,7 @@
 <style lang="scss">
 	.menu-card {
 		@include normalFlex($justify: space-around);
-		margin: 30rpx;
+		margin: $gMargin;
 		border-radius: $gRadius;
 		border:  $gBorder;
 		box-shadow: $gShadow;

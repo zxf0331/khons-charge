@@ -4,17 +4,18 @@
 		<menu-card :menu='menu' @menuItemClick='handleMenuItemClick'></menu-card>
 		<my-car @addCarClick='handleAddCarClick'></my-car>
 		<more-service @moreServItemClick='handleServiceClick'></more-service>
-		<cc-myTabbar :tabBarShow="2"></cc-myTabbar>
+		<!-- 自定义tabbar -->
+		<!-- <cc-myTabbar :tabBarShow="2"></cc-myTabbar> -->
 	</view>
 </template>
 
-<script>
-	export default {
-		onReady() {
-			uni.hideTabBar()
-		}
-	}
-</script>
+// <script>
+// 	export default {
+// 		onReady() {
+// 			uni.hideTabBar()
+// 		}
+// 	}
+// </script>
 
 <script setup>
 	import { onMounted } from 'vue'

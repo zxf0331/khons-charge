@@ -2,23 +2,16 @@
 const common_vendor = require("../../common/vendor.js");
 if (!Array) {
   const _easycom_menu_card2 = common_vendor.resolveComponent("menu-card");
-  const _easycom_cc_myTabbar2 = common_vendor.resolveComponent("cc-myTabbar");
-  (_easycom_menu_card2 + _easycom_cc_myTabbar2)();
+  _easycom_menu_card2();
 }
 const _easycom_menu_card = () => "../../components/menu-card/menu-card.js";
-const _easycom_cc_myTabbar = () => "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar.js";
 if (!Math) {
-  (UserInfo + _easycom_menu_card + MyCar + MoreService + _easycom_cc_myTabbar)();
+  (UserInfo + _easycom_menu_card + MyCar + MoreService)();
 }
 const UserInfo = () => "./cpns/UserInfo.js";
 const MyCar = () => "./cpns/MyCar.js";
 const MoreService = () => "./cpns/MoreService.js";
-const __default__ = {
-  onReady() {
-    common_vendor.index.hideTabBar();
-  }
-};
-const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
+const _sfc_main = {
   __name: "user",
   setup(__props) {
     common_vendor.onMounted(() => {
@@ -69,13 +62,10 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
           menu
         }),
         e: common_vendor.o(handleAddCarClick),
-        f: common_vendor.o(handleServiceClick),
-        g: common_vendor.p({
-          tabBarShow: 2
-        })
+        f: common_vendor.o(handleServiceClick)
       };
     };
   }
-});
+};
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/khons-charge/pages/user/user.vue"]]);
 wx.createPage(MiniProgramPage);

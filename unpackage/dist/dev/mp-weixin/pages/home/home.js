@@ -6,24 +6,17 @@ if (!Array) {
   const _easycom_menu_card2 = common_vendor.resolveComponent("menu-card");
   const _easycom_uni_section2 = common_vendor.resolveComponent("uni-section");
   const _easycom_charge_list2 = common_vendor.resolveComponent("charge-list");
-  const _easycom_cc_myTabbar2 = common_vendor.resolveComponent("cc-myTabbar");
-  (_easycom_uni_search_bar2 + _easycom_menu_card2 + _easycom_uni_section2 + _easycom_charge_list2 + _easycom_cc_myTabbar2)();
+  (_easycom_uni_search_bar2 + _easycom_menu_card2 + _easycom_uni_section2 + _easycom_charge_list2)();
 }
 const _easycom_uni_search_bar = () => "../../uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.js";
 const _easycom_menu_card = () => "../../components/menu-card/menu-card.js";
 const _easycom_uni_section = () => "../../uni_modules/uni-section/components/uni-section/uni-section.js";
 const _easycom_charge_list = () => "../../components/charge-list/charge-list.js";
-const _easycom_cc_myTabbar = () => "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar.js";
 if (!Math) {
-  (_easycom_uni_search_bar + HomeBanner + _easycom_menu_card + _easycom_uni_section + _easycom_charge_list + _easycom_cc_myTabbar)();
+  (_easycom_uni_search_bar + HomeBanner + _easycom_menu_card + _easycom_uni_section + _easycom_charge_list)();
 }
 const HomeBanner = () => "./cpns/HomeBanner.js";
-const __default__ = {
-  onReady() {
-    common_vendor.index.hideTabBar();
-  }
-};
-const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
+const _sfc_main = {
   __name: "home",
   setup(__props) {
     const mainStore = store_main.useMainStore();
@@ -43,6 +36,9 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         url: "/pages/search/search"
       });
     }
+    function handleMenuItemClick(item) {
+      console.log(item);
+    }
     const banners = [
       {
         url: "/static/images/banner/banner1.jpg"
@@ -56,8 +52,10 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
     ];
     const menu = [
       {
+        action: "scanCode",
         img: "/static/images/menu/scan.png",
-        title: "我要充电"
+        title: "我要充电",
+        pagePath: "/pages/scan/scan"
       },
       {
         img: "/static/images/menu/wallet.png",
@@ -120,14 +118,15 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
         e: common_vendor.p({
           banners
         }),
-        f: common_vendor.p({
+        f: common_vendor.o(handleMenuItemClick),
+        g: common_vendor.p({
           menu
         }),
-        g: common_vendor.p({
+        h: common_vendor.p({
           title: "附近充电站",
           type: "line"
         }),
-        h: common_vendor.f(stationList, (itemInfo, k0, i0) => {
+        i: common_vendor.f(stationList, (itemInfo, k0, i0) => {
           return {
             a: "62bf4a9a-4-" + i0,
             b: common_vendor.p({
@@ -135,13 +134,10 @@ const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {
             }),
             c: itemInfo.name
           };
-        }),
-        i: common_vendor.p({
-          tabBarShow: 0
         })
       };
     };
   }
-});
+};
 const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["__file", "D:/khons-charge/pages/home/home.vue"]]);
 wx.createPage(MiniProgramPage);

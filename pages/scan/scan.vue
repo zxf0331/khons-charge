@@ -5,20 +5,16 @@
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		onReady() {
-			uni.hideTabBar()
-		},
-		methods: {
-			
-		}
-	}
+// <script>
+// 	export default {
+// 		onReady() {
+// 			uni.hideTabBar()
+// 		}
+// 	}
+// </script>
+
+<script setup>
+	
 </script>
 
 <style lang="scss">

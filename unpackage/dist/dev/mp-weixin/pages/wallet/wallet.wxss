@@ -1,0 +1,31 @@
+/* 水平间距 */
+/* 水平间距 */
+ .uni-card__header-content-title {
+  font-weight: 600;
+}
+.wallet .wallet_card {
+  background-image: linear-gradient(to bottom, #e0ecfc, #fcfdff);
+  padding: 30rpx;
+}
+.wallet .wallet_card .balance {
+  padding: 30rpx;
+  border-radius: 26rpx;
+  background-color: #0e75ee;
+}
+.wallet .wallet_card .balance .money {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  width: 100%;
+}
+.wallet .wallet_card .balance .money .num {
+  color: #fffefc;
+  font-size: 60rpx;
+  font-weight: 600;
+}
+.wallet .wallet_card .balance .money .pay {
+  border-radius: 60rpx;
+  margin: 0 !important;
+}

@@ -1,0 +1,1 @@
+<view class="wallet"><view class="wallet_card"><view class="balance"><text style="color:#f3f3f3;font-size:24rpx">余额(元)</text><view class="money"><text class="num">45.00</text><button class="pay" size="mini">充值</button></view></view></view></view>

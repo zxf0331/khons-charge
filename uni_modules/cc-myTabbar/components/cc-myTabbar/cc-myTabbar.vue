@@ -88,8 +88,19 @@
 						})
 						break;
 					case 1:
-						uni.switchTab({
-							url:'/pages/scan/scan'
+						// 执行扫码操作
+						uni.scanCode({
+							success: (res) => {
+								console.log('扫描结果：', res)
+								// TODO 后续处理
+								
+							},
+							fail: () => {
+								uni.showToast({
+									title: '扫描失败',
+									icon: 'none'
+								})
+							}
 						})
 						break;
 					case 2:

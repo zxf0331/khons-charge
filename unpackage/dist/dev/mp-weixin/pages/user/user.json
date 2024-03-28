@@ -4,7 +4,6 @@
   "backgroundColorTop": "#254818",
   "usingComponents": {
     "menu-card": "../../components/menu-card/menu-card",
-    "cc-my-tabbar": "../../uni_modules/cc-myTabbar/components/cc-myTabbar/cc-myTabbar",
     "user-info": "./cpns/UserInfo",
     "my-car": "./cpns/MyCar",
     "more-service": "./cpns/MoreService"
